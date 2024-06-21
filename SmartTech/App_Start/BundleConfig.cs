@@ -1,30 +1,60 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace SmartTech
+public class BundleConfig
 {
-    public class BundleConfig
+    public static void RegisterBundles(BundleCollection bundles)
     {
-        // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
-        public static void RegisterBundles(BundleCollection bundles)
-        {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+        // Bundle and minify CSS files
+        bundles.Add(new StyleBundle("~/bundles/css").Include(
+                  "~/Content/frontend/css/plugins/animation.css",
+                  "~/Content/frontend/css/plugins/bootstrap.min.css",
+                  "~/Content/frontend/css/plugins/flaticon.css",
+                  "~/Content/frontend/css/plugins/font-awesome.css",
+                  "~/Content/frontend/css/plugins/iconfont.css",
+                  "~/Content/frontend/css/plugins/ion.rangeSlider.min.css",
+                  "~/Content/frontend/css/plugins/light-box.css",
+                  "~/Content/frontend/css/plugins/line-icons.css",
+                  "~/Content/frontend/css/plugins/slick-theme.css",
+                  "~/Content/frontend/css/plugins/slick.css",
+                  "~/Content/frontend/css/plugins/snackbar.min.css",
+                  "~/Content/frontend/css/plugins/themify.css",
+                  "~/Content/frontend/css/styles.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+        // JavaScript bundles
+        bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                    "~/Content/frontend/js/jquery.min.js"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+        bundles.Add(new ScriptBundle("~/bundles/popper").Include(
+                    "~/Content/frontend/js/popper.min.js"));
 
-            bundles.Add(new Bundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+        bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                    "~/Content/frontend/js/bootstrap.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
-        }
+        bundles.Add(new ScriptBundle("~/bundles/ionrangeslider").Include(
+                    "~/Content/frontend/js/ion.rangeSlider.min.js"));
+
+        bundles.Add(new ScriptBundle("~/bundles/slick").Include(
+                    "~/Content/frontend/js/slick.js"));
+
+        bundles.Add(new ScriptBundle("~/bundles/sliderbg").Include(
+                    "~/Content/frontend/js/slider-bg.js"));
+
+        bundles.Add(new ScriptBundle("~/bundles/lightbox").Include(
+                    "~/Content/frontend/js/lightbox.js"));
+
+        bundles.Add(new ScriptBundle("~/bundles/smoothproducts").Include(
+                    "~/Content/frontend/js/smoothproducts.js"));
+
+        bundles.Add(new ScriptBundle("~/bundles/snackbar").Include(
+                    "~/Content/frontend/js/snackbar.min.js"));
+
+        bundles.Add(new ScriptBundle("~/bundles/styleswitcher").Include(
+                    "~/Content/frontend/js/jQuery.style.switcher.js"));
+
+        bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                    "~/Content/frontend/js/custom.js"));
+
+        // Enable optimizations in release mode (consider setting to false in debug mode)
+        BundleTable.EnableOptimizations = true;
     }
 }
