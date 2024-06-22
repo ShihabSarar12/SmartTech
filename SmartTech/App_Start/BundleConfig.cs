@@ -4,7 +4,7 @@ public class BundleConfig
 {
     public static void RegisterBundles(BundleCollection bundles)
     {
-        // Bundle and minify CSS files
+        // Bundle and include CSS files without minification
         bundles.Add(new StyleBundle("~/bundles/css").Include(
                   "~/Content/frontend/css/plugins/animation.css",
                   "~/Content/frontend/css/plugins/bootstrap.min.css",
@@ -18,9 +18,9 @@ public class BundleConfig
                   "~/Content/frontend/css/plugins/slick.css",
                   "~/Content/frontend/css/plugins/snackbar.min.css",
                   "~/Content/frontend/css/plugins/themify.css",
-                  "~/Content/frontend/css/styles.css"));
+                  "~/Content/frontend/css/styles.css").Include("~/Content/frontend/css", new CssRewriteUrlTransform()));
 
-        // JavaScript bundles
+        // JavaScript bundles without minification
         bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                     "~/Content/frontend/js/jquery.min.js"));
 
@@ -54,7 +54,7 @@ public class BundleConfig
         bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                     "~/Content/frontend/js/custom.js"));
 
-        // Enable optimizations in release mode (consider setting to false in debug mode)
-        BundleTable.EnableOptimizations = true;
+        // Disable optimizations to avoid minification
+        BundleTable.EnableOptimizations = false;
     }
 }

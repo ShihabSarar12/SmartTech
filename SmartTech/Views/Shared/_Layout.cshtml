@@ -5,11 +5,23 @@
         <meta name="author" content="Themezhub" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@ViewData["Title"] - Kumo Fashion eCommerce</title>
+        <title>@ViewData["Title"]</title>
 
         <!-- Stylesheets -->
-        @Styles.Render("~/bundles/css") <!-- Use CSS bundle defined in BundleConfig.cs -->
-
+        @*@Styles.Render("~/bundles/css")*@ <!-- Use CSS bundle defined in BundleConfig.cs -->
+          <link href="~/Content/frontend/css/plugins/animation.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/bootstrap.min.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/flaticon.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/font-awesome.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/iconfont.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/ion.rangeSlider.min.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/light-box.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/line-icons.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/slick-theme.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/slick.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/snackbar.min.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/plugins/themify.css" rel="stylesheet" />
+          <link href="~/Content/frontend/css/styles.css" rel="stylesheet" />
     </head>
 
     <body>
@@ -33,7 +45,7 @@
                     <div class="row">
 
                         <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 hide-ipad">
-                            <div class="top_second"><p class="medium text-muted m-0 p-0"><i class="lni lni-phone fs-sm"></i></i> Hotline <a href="#" class="medium text-dark text-underline">0(800) 123-456</a></p></div>
+                            <div class="top_second"><p class="medium text-muted m-0 p-0"><i class="lni lni-phone fs-sm"></i> Hotline <a href="#" class="medium text-dark text-underline">01757647319</a></p></div>
                         </div>
 
                         <!-- Right Menu -->
@@ -87,7 +99,7 @@
                                         <li>
                                             <div class="call d-flex align-items-center text-left">
                                                 <i class="lni lni-phone fs-xl"></i>
-                                                <span class="text-muted small ml-3">Call Us Now:<strong class="d-block text-dark fs-md">0(800) 123-456</strong></span>
+                                                <span class="text-muted small ml-3">Call Us Now:<strong class="d-block text-dark fs-md">01757647319</strong></span>
                                             </div>
                                         </li>
                                         <li>
@@ -310,7 +322,7 @@
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-12 col-md-12 text-center">
-                                <p class="mb-0">© 2021 Kumo. Designd By <a href="https://themezhub.com/">ThemezHub</a>.</p>
+                                <p class="mb-0">© 2024 SmartTech. Designd By <a href="https://synexdigital">Synex Digital</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -466,27 +478,17 @@
         <!-- ============================================================== -->
         <!-- All Jquery -->
         <!-- ============================================================== -->
-        @Scripts.Render("~/bundles/jquery")
-
-        @Scripts.Render("~/bundles/popper")
-
-        @Scripts.Render("~/bundles/bootstrap")
-
-        @Scripts.Render("~/bundles/ionrangeslider")
-
-        @Scripts.Render("~/bundles/slick")
-
-        @Scripts.Render("~/bundles/sliderbg")
-
-        @Scripts.Render("~/bundles/lightbox")
-
-        @Scripts.Render("~/bundles/smoothproducts")
-
-        @Scripts.Render("~/bundles/snackbar")
-
-        @Scripts.Render("~/bundles/styleswitcher")
-
-        @Scripts.Render("~/bundles/custom")
+        <script src="~/Content/frontend/js/jquery.min.js"></script>
+        <script src="~/Content/frontend/js/popper.min.js"></script>
+        <script src="~/Content/frontend/js/bootstrap.min.js"></script>
+        <script src="~/Content/frontend/js/ion.rangeSlider.min.js"></script>
+        <script src="~/Content/frontend/js/slick.js"></script>
+        <script src="~/Content/frontend/js/slider-bg.js"></script>
+        <script src="~/Content/frontend/js/lightbox.js"></script>
+        <script src="~/Content/frontend/js/smoothproducts.js"></script>
+        <script src="~/Content/frontend/js/snackbar.min.js"></script>
+        <script src="~/Content/frontend/js/jQuery.style.switcher.js"></script>
+        <script src="~/Content/frontend/js/custom.js"></script>
         <!-- ============================================================== -->
         <!-- This page plugins -->
         <!-- ============================================================== -->
