@@ -18,7 +18,7 @@
     <!-- Top header  -->
     <!-- ============================================================== -->
     <!-- ======================= Shop Style 1 ======================== -->
-    <section class="bg-cover" style="background:url(assets/img/banner-2.png) no-repeat;">
+    <section class="bg-cover" style="background:url('@Url.Content("~/Content/frontend/img/banner-2.png")') no-repeat;">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -37,8 +37,8 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                            <li class="breadcrumb-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="breadcrumb-item">@Html.ActionLink("Shop", "Shop", "Home")</li>
                             <li class="breadcrumb-item active" aria-current="page">Women's</li>
                         </ol>
                     </nav>
@@ -297,13 +297,13 @@
                                 <div class="badge bg-info text-white position-absolute ft-regular ab-left text-upper">New</div>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/12.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/12.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
 
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Formal Men Lowers</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Formal Men Lowers</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$129</span></div>
                                     </div>
                                 </div>
@@ -315,12 +315,12 @@
                             <div class="product_grid card b-0">
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/13.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/13.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Half Running Suit</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Half Running Suit</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$99</span></div>
                                     </div>
                                 </div>
@@ -333,12 +333,12 @@
                                 <div class="badge bg-warning text-white position-absolute ft-regular ab-left text-upper">Hot</div>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/14.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/14.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Half Fancy Lady Dress</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Half Fancy Lady Dress</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$150</span></div>
                                     </div>
                                 </div>
@@ -351,12 +351,12 @@
                                 <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/1.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/1.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Half Running Set</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Half Running Set</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$220</span></div>
                                     </div>
                                 </div>
@@ -369,12 +369,12 @@
                                 <div class="badge bg-info text-white position-absolute ft-regular ab-left text-upper">New</div>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/2.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/2.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Formal Men Lowers</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Formal Men Lowers</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$50</span></div>
                                     </div>
                                 </div>
@@ -386,12 +386,12 @@
                             <div class="product_grid card b-0">
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/3.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/3.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Half Running Suit</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Half Running Suit</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$120</span></div>
                                     </div>
                                 </div>
@@ -404,12 +404,12 @@
                                 <div class="badge bg-warning text-white position-absolute ft-regular ab-left text-upper">Hot</div>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/4.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/4.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Half Fancy Lady Dress</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Half Fancy Lady Dress</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$199</span></div>
                                     </div>
                                 </div>
@@ -421,12 +421,12 @@
                             <div class="product_grid card b-0">
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/5.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/5.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Flix Flox Jeans</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Flix Flox Jeans</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$150</span></div>
                                     </div>
                                 </div>
@@ -439,12 +439,12 @@
                                 <div class="badge bg-danger text-white position-absolute ft-regular ab-left text-upper">Hot</div>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
-                                        <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/6.jpg" alt="..."></a>
+                                        <a class="card-img-top d-block overflow-hidden" href="#"><img class="card-img-top" src="~/Content/frontend/img/product/6.jpg" alt="..."></a>
                                     </div>
                                 </div>
                                 <div class="card-footer b-0 p-0 pt-2 bg-white">
                                     <div class="text-left">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Fancy Salwar Suits</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">Fancy Salwar Suits</a></h5>
                                         <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$235</span></div>
                                     </div>
                                 </div>
