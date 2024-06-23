@@ -20,6 +20,11 @@ namespace SmartTech.Controllers
             return View();
         }
 
+        public ActionResult Shop() 
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -154,10 +154,10 @@
                             <div class="nav-toggle"></div>
                             <div class="nav-menus-wrapper">
                                 <ul class="nav-menu">
-                                    <li><a href="#" class="pl-0">Home</a></li>
-                                    <li><a href="#">Shop</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Shop", "Shop", "Home")</li>
+                                    <li>@Html.ActionLink("About Us", "Contact", "Home")</li>
+                                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                                 </ul>
                             </div>
                         </div>
