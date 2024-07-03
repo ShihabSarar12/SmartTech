@@ -27,5 +27,9 @@ namespace SmartTech.Controllers
         {
             return View();
         }
+        public ActionResult Signin_Register()
+        {
+            return View();
+        }
     }
 }

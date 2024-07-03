@@ -2261,7 +2261,7 @@ nav a {
     color:#333d46 !important;
 }
 .nav-brand img {
-    max-width:120px;
+    max-width:200px;
 	position: relative;
     top:0px;
 }
@@ -4639,7 +4639,7 @@ img.img-footer {
 }
 img.img-footer.small {
     margin: 0;
-    max-width:150px;
+    max-width:180px;
     position: relative;
     top: 2px;
 }
