@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SmartTechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="profile" Type="varchar" MaxLength="191" />
+          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="remember_token" Type="varchar" MaxLength="100" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="banners">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="banner_category" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="banner_title" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="banner_description" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="banner_image" Type="varchar" MaxLength="191" />
+          <Property Name="link" Type="varchar" MaxLength="191" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="campaign_products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="campaign_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="campaigns">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="campaign_for" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="campaign_name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="campaign_image" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="image_type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="percentage" Type="int" Nullable="false" />
+          <Property Name="start" Type="datetime" Nullable="false" />
+          <Property Name="end" Type="datetime" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="configs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="logo" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="failed_jobs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="connection" Type="text" Nullable="false" />
+          <Property Name="queue" Type="text" Nullable="false" />
+          <Property Name="payload" Type="text" Nullable="false" />
+          <Property Name="exception" Type="text" Nullable="false" />
+          <Property Name="failed_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="migrations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="migration" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="batch" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="bigint" Nullable="false" />
+          <Property Name="product_id" Type="bigint" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="qnt" Type="bigint" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="191" />
+          <Property Name="address" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="shipping_id" Type="bigint" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="message" Type="text" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SmartTech.dbo.password_reset_tokens' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="password_reset_tokens">
+          <Key>
+            <PropertyRef Name="email" />
+            <PropertyRef Name="token" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="password_resets">
+          <Key>
+            <PropertyRef Name="email" />
+            <PropertyRef Name="token" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="personal_access_tokens">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tokenable_type" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="tokenable_id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="abilities" Type="text" />
+          <Property Name="last_used_at" Type="datetime" />
+          <Property Name="expires_at" Type="datetime" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="product_categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parent_category_id" Type="int" />
+          <Property Name="category_name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="slugs" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="category_image" Type="varchar" MaxLength="191" />
+          <Property Name="category_icon" Type="varchar" MaxLength="191" />
+          <Property Name="seo_title" Type="nvarchar" MaxLength="191" />
+          <Property Name="seo_description" Type="nvarchar(max)" />
+          <Property Name="seo_tags" Type="varchar" MaxLength="191" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="product_photos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="product_services">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="slugs" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="short_description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="discount" Type="bigint" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="link" Type="varchar" MaxLength="191" />
+          <Property Name="stock_status" Type="int" Nullable="false" />
+          <Property Name="featured" Type="int" Nullable="false" />
+          <Property Name="popular" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="seo_title" Type="nvarchar" MaxLength="191" />
+          <Property Name="seo_description" Type="nvarchar(max)" />
+          <Property Name="seo_tags" Type="varchar" MaxLength="191" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="services">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logo" Type="varchar" MaxLength="191" />
+          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="shippings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="email_verified_at" Type="datetime" />
+          <Property Name="password" Type="varchar" MaxLength="191" Nullable="false" />
+          <Property Name="remember_token" Type="varchar" MaxLength="100" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="SmartTechModelStoreContainer">
+          <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="banners" EntityType="Self.banners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="campaign_products" EntityType="Self.campaign_products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="campaigns" EntityType="Self.campaigns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="configs" EntityType="Self.configs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="failed_jobs" EntityType="Self.failed_jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="migrations" EntityType="Self.migrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_products" EntityType="Self.order_products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personal_access_tokens" EntityType="Self.personal_access_tokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_categories" EntityType="Self.product_categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_photos" EntityType="Self.product_photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_services" EntityType="Self.product_services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shippings" EntityType="Self.shippings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="password_reset_tokens" EntityType="Self.password_reset_tokens" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [password_reset_tokens].[email] AS [email], 
+    [password_reset_tokens].[token] AS [token], 
+    [password_reset_tokens].[created_at] AS [created_at]
+    FROM [dbo].[password_reset_tokens] AS [password_reset_tokens]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="password_resets" EntityType="Self.password_resets" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [password_resets].[email] AS [email], 
+    [password_resets].[token] AS [token], 
+    [password_resets].[created_at] AS [created_at]
+    FROM [dbo].[password_resets] AS [password_resets]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SmartTechModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="profile" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="banner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="banner_category" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="banner_title" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="banner_description" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="banner_image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="campaign_products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="campaign_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="campaign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="campaign_for" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="campaign_name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="campaign_image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="percentage" Type="Int32" Nullable="false" />
+          <Property Name="start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="logo" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="failed_jobs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uuid" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="connection" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="queue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="payload" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="failed_at" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="migration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="migration1" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="batch" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int64" Nullable="false" />
+          <Property Name="product_id" Type="Int64" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="qnt" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_id" Type="Int64" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="personal_access_tokens">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tokenable_type" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tokenable_id" Type="Int64" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="abilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="last_used_at" Type="DateTime" Precision="3" />
+          <Property Name="expires_at" Type="DateTime" Precision="3" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="product_categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent_category_id" Type="Int32" />
+          <Property Name="category_name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="slugs" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="category_image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="category_icon" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="seo_title" Type="String" MaxLength="191" FixedLength="false" Unicode="true" />
+          <Property Name="seo_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seo_tags" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="product_photos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="product_services">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="slugs" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="short_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="discount" Type="Int64" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="stock_status" Type="Int32" Nullable="false" />
+          <Property Name="featured" Type="Int32" Nullable="false" />
+          <Property Name="popular" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="seo_title" Type="String" MaxLength="191" FixedLength="false" Unicode="true" />
+          <Property Name="seo_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seo_tags" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logo" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="shipping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_verified_at" Type="DateTime" Precision="3" />
+          <Property Name="password" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="password_reset_tokens">
+          <Key>
+            <PropertyRef Name="email" />
+            <PropertyRef Name="token" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="password_resets">
+          <Key>
+            <PropertyRef Name="email" />
+            <PropertyRef Name="token" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="SmartTechEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="banners" EntityType="Self.banner" />
+          <EntitySet Name="campaign_products" EntityType="Self.campaign_products" />
+          <EntitySet Name="campaigns" EntityType="Self.campaign" />
+          <EntitySet Name="configs" EntityType="Self.config" />
+          <EntitySet Name="failed_jobs" EntityType="Self.failed_jobs" />
+          <EntitySet Name="migrations" EntityType="Self.migration" />
+          <EntitySet Name="order_products" EntityType="Self.order_products" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="personal_access_tokens" EntityType="Self.personal_access_tokens" />
+          <EntitySet Name="product_categories" EntityType="Self.product_categories" />
+          <EntitySet Name="product_photos" EntityType="Self.product_photos" />
+          <EntitySet Name="product_services" EntityType="Self.product_services" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="services" EntityType="Self.service" />
+          <EntitySet Name="shippings" EntityType="Self.shipping" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="password_reset_tokens" EntityType="Self.password_reset_tokens" />
+          <EntitySet Name="password_resets" EntityType="Self.password_resets" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SmartTechModelStoreContainer" CdmEntityContainer="SmartTechEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="SmartTechModel.admin">
+              <MappingFragment StoreEntitySet="admins">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="profile" ColumnName="profile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="remember_token" ColumnName="remember_token" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="banners">
+            <EntityTypeMapping TypeName="SmartTechModel.banner">
+              <MappingFragment StoreEntitySet="banners">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="banner_category" ColumnName="banner_category" />
+                <ScalarProperty Name="banner_title" ColumnName="banner_title" />
+                <ScalarProperty Name="banner_description" ColumnName="banner_description" />
+                <ScalarProperty Name="banner_image" ColumnName="banner_image" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="campaign_products">
+            <EntityTypeMapping TypeName="SmartTechModel.campaign_products">
+              <MappingFragment StoreEntitySet="campaign_products">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="campaign_id" ColumnName="campaign_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="campaigns">
+            <EntityTypeMapping TypeName="SmartTechModel.campaign">
+              <MappingFragment StoreEntitySet="campaigns">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="campaign_for" ColumnName="campaign_for" />
+                <ScalarProperty Name="campaign_name" ColumnName="campaign_name" />
+                <ScalarProperty Name="campaign_image" ColumnName="campaign_image" />
+                <ScalarProperty Name="image_type" ColumnName="image_type" />
+                <ScalarProperty Name="percentage" ColumnName="percentage" />
+                <ScalarProperty Name="start" ColumnName="start" />
+                <ScalarProperty Name="end" ColumnName="end" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configs">
+            <EntityTypeMapping TypeName="SmartTechModel.config">
+              <MappingFragment StoreEntitySet="configs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="failed_jobs">
+            <EntityTypeMapping TypeName="SmartTechModel.failed_jobs">
+              <MappingFragment StoreEntitySet="failed_jobs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="connection" ColumnName="connection" />
+                <ScalarProperty Name="queue" ColumnName="queue" />
+                <ScalarProperty Name="payload" ColumnName="payload" />
+                <ScalarProperty Name="exception" ColumnName="exception" />
+                <ScalarProperty Name="failed_at" ColumnName="failed_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="migrations">
+            <EntityTypeMapping TypeName="SmartTechModel.migration">
+              <MappingFragment StoreEntitySet="migrations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="migration1" ColumnName="migration" />
+                <ScalarProperty Name="batch" ColumnName="batch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_products">
+            <EntityTypeMapping TypeName="SmartTechModel.order_products">
+              <MappingFragment StoreEntitySet="order_products">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="qnt" ColumnName="qnt" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="SmartTechModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="shipping_id" ColumnName="shipping_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personal_access_tokens">
+            <EntityTypeMapping TypeName="SmartTechModel.personal_access_tokens">
+              <MappingFragment StoreEntitySet="personal_access_tokens">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tokenable_type" ColumnName="tokenable_type" />
+                <ScalarProperty Name="tokenable_id" ColumnName="tokenable_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="abilities" ColumnName="abilities" />
+                <ScalarProperty Name="last_used_at" ColumnName="last_used_at" />
+                <ScalarProperty Name="expires_at" ColumnName="expires_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_categories">
+            <EntityTypeMapping TypeName="SmartTechModel.product_categories">
+              <MappingFragment StoreEntitySet="product_categories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_category_id" ColumnName="parent_category_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="slugs" ColumnName="slugs" />
+                <ScalarProperty Name="category_image" ColumnName="category_image" />
+                <ScalarProperty Name="category_icon" ColumnName="category_icon" />
+                <ScalarProperty Name="seo_title" ColumnName="seo_title" />
+                <ScalarProperty Name="seo_description" ColumnName="seo_description" />
+                <ScalarProperty Name="seo_tags" ColumnName="seo_tags" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_photos">
+            <EntityTypeMapping TypeName="SmartTechModel.product_photos">
+              <MappingFragment StoreEntitySet="product_photos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_services">
+            <EntityTypeMapping TypeName="SmartTechModel.product_services">
+              <MappingFragment StoreEntitySet="product_services">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="SmartTechModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="slugs" ColumnName="slugs" />
+                <ScalarProperty Name="short_description" ColumnName="short_description" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="stock_status" ColumnName="stock_status" />
+                <ScalarProperty Name="featured" ColumnName="featured" />
+                <ScalarProperty Name="popular" ColumnName="popular" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="seo_title" ColumnName="seo_title" />
+                <ScalarProperty Name="seo_description" ColumnName="seo_description" />
+                <ScalarProperty Name="seo_tags" ColumnName="seo_tags" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="services">
+            <EntityTypeMapping TypeName="SmartTechModel.service">
+              <MappingFragment StoreEntitySet="services">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shippings">
+            <EntityTypeMapping TypeName="SmartTechModel.shipping">
+              <MappingFragment StoreEntitySet="shippings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="SmartTechModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="email_verified_at" ColumnName="email_verified_at" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="remember_token" ColumnName="remember_token" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="password_reset_tokens">
+            <EntityTypeMapping TypeName="SmartTechModel.password_reset_tokens">
+              <MappingFragment StoreEntitySet="password_reset_tokens">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="password_resets">
+            <EntityTypeMapping TypeName="SmartTechModel.password_resets">
+              <MappingFragment StoreEntitySet="password_resets">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

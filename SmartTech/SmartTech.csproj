@@ -135,6 +135,78 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\admin.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\banner.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\campaign.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\campaign_products.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\config.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\failed_jobs.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\migration.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order_products.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\password_resets.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\password_reset_tokens.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\personal_access_tokens.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_categories.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_photos.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_services.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\service.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\shipping.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +407,16 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+      <LastGenOutput>DbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+      <LastGenOutput>DbModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -397,6 +479,13 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <EntityDeploy Include="Models\DbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DbModel.edmx.diagram">
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />

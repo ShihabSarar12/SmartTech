@@ -25,8 +25,6 @@ namespace SmartTech.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         public ActionResult Signin_Register()
