@@ -24,5 +24,6 @@ namespace SmartTech.Models
         public string remember_token { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
+        public string image_url { get; set; }
     }
 }
