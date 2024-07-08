@@ -11,6 +11,10 @@ namespace SmartTech.Controllers
         // GET: Profile
         public ActionResult Index()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         public ActionResult Wishlist()

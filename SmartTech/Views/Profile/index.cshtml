@@ -1,6 +1,8 @@
 ﻿
 @{
     ViewBag.Title = "Profile";
+    string name = ViewBag?.User?.name;
+    string email = ViewBag?.User?.email;
 }
 <!-- ======================= Top Breadcrubms ======================== -->
 <div class="gray py-3">
@@ -57,14 +59,14 @@
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">First Name *</label>
-                                <input type="text" class="form-control" placeholder="Dhananjay" />
+                                <input type="text" class="form-control" placeholder="@name" />
                             </div>
                         </div>
 
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">Email ID *</label>
-                                <input type="text" class="form-control" placeholder="dhananjay7@gmail.com" />
+                                <input type="text" class="form-control" placeholder="@email" />
                             </div>
                         </div>
 
@@ -81,13 +83,7 @@
                                 <input type="text" class="form-control" placeholder="New Password" />
                             </div>
                         </div>
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <label class="small text-dark ft-medium">Country</label>
-                                <input type="text" class="form-control" placeholder="Country" />
-                            </div>
-                        </div>
+                        @*Have to add Address to user attribute*@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">Address</label>

@@ -14,6 +14,8 @@ namespace SmartTech.Controllers
         private SmartTechEntities db = new SmartTechEntities();
         public ActionResult Index()
         {
+            var user = Session["user"];
+            ViewBag.User = user;
             return View();
         }
 
@@ -43,7 +45,7 @@ namespace SmartTech.Controllers
         public ActionResult Signin_Register(user user)
         {
             var IsValid = db.users.Where(usr => usr.Equals(user.email)).FirstOrDefault();
-            if (IsValid == null) 
+            if (IsValid != null) 
             {
                 ViewBag.Error = "User already exists with this email!";
                 return View();
@@ -76,6 +78,7 @@ namespace SmartTech.Controllers
                 ViewBag.IsValid = "Credentials doesn\'t match!!";
                 return View();
             }
+            Session["user"] = IsValidUser;
             return RedirectToAction("Index");
         }
 
