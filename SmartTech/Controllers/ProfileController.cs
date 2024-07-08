@@ -15,14 +15,25 @@ namespace SmartTech.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            ViewBag.User = Session["user"];
             return View();
         }
         public ActionResult Wishlist()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.User = Session["user"];
             return View();
         }
         public ActionResult Orders()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.User = Session["user"];
             return View();
         }
 
