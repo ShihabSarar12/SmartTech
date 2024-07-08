@@ -14,8 +14,7 @@ namespace SmartTech.Controllers
         private SmartTechEntities db = new SmartTechEntities();
         public ActionResult Index()
         {
-            var user = Session["user"];
-            ViewBag.User = user;
+            ViewBag.User = Session["user"];
             return View();
         }
 
