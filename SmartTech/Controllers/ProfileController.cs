@@ -11,14 +11,29 @@ namespace SmartTech.Controllers
         // GET: Profile
         public ActionResult Index()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.User = Session["user"];
             return View();
         }
         public ActionResult Wishlist()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.User = Session["user"];
             return View();
         }
         public ActionResult Orders()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.User = Session["user"];
             return View();
         }
 
