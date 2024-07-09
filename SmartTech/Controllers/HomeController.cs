@@ -43,12 +43,6 @@ namespace SmartTech.Controllers
         [HttpPost]
         public ActionResult Signin_Register(user user)
         {
-            var IsValid = db.users.Where(usr => usr.Equals(user.email)).FirstOrDefault();
-            if (IsValid != null) 
-            {
-                ViewBag.Error = "User already exists with this email!";
-                return View();
-            }
             if (user.password != user.confirm_password) 
             {
                 ViewBag.Error = "Password doesn\'t match!!";
