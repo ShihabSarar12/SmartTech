@@ -33,64 +33,6 @@
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
         </EntityType>
-        <EntityType Name="campaign_products">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="campaign_id" Type="int" Nullable="false" />
-          <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="created_at" Type="datetime" />
-          <Property Name="updated_at" Type="datetime" />
-        </EntityType>
-        <EntityType Name="campaigns">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="campaign_for" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="campaign_name" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="campaign_image" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="image_type" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="percentage" Type="int" Nullable="false" />
-          <Property Name="start" Type="datetime" Nullable="false" />
-          <Property Name="end" Type="datetime" Nullable="false" />
-          <Property Name="created_at" Type="datetime" />
-          <Property Name="updated_at" Type="datetime" />
-        </EntityType>
-        <EntityType Name="configs">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="number" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="address" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="logo" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="created_at" Type="datetime" />
-          <Property Name="updated_at" Type="datetime" />
-        </EntityType>
-        <EntityType Name="failed_jobs">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="uuid" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="connection" Type="text" Nullable="false" />
-          <Property Name="queue" Type="text" Nullable="false" />
-          <Property Name="payload" Type="text" Nullable="false" />
-          <Property Name="exception" Type="text" Nullable="false" />
-          <Property Name="failed_at" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="migrations">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="migration" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="batch" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="order_products">
           <Key>
             <PropertyRef Name="id" />
@@ -122,41 +64,8 @@
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SmartTech.dbo.password_reset_tokens' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="password_reset_tokens">
-          <Key>
-            <PropertyRef Name="email" />
-            <PropertyRef Name="token" />
-          </Key>
-          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="token" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="created_at" Type="datetime" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="password_resets">
-          <Key>
-            <PropertyRef Name="email" />
-            <PropertyRef Name="token" />
-          </Key>
-          <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="token" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="created_at" Type="datetime" />
-        </EntityType>
-        <EntityType Name="personal_access_tokens">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tokenable_type" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="tokenable_id" Type="bigint" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
-          <Property Name="token" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="abilities" Type="text" />
-          <Property Name="last_used_at" Type="datetime" />
-          <Property Name="expires_at" Type="datetime" />
-          <Property Name="created_at" Type="datetime" />
-          <Property Name="updated_at" Type="datetime" />
-        </EntityType>
         <EntityType Name="product_categories">
           <Key>
             <PropertyRef Name="id" />
@@ -183,16 +92,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
         </EntityType>
-        <EntityType Name="product_services">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="service_id" Type="int" Nullable="false" />
-          <Property Name="created_at" Type="datetime" />
-          <Property Name="updated_at" Type="datetime" />
-        </EntityType>
         <EntityType Name="products">
           <Key>
             <PropertyRef Name="id" />
@@ -213,16 +112,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
           <Property Name="seo_title" Type="nvarchar" MaxLength="191" />
           <Property Name="seo_description" Type="nvarchar(max)" />
           <Property Name="seo_tags" Type="varchar" MaxLength="191" />
-          <Property Name="created_at" Type="datetime" />
-          <Property Name="updated_at" Type="datetime" />
-        </EntityType>
-        <EntityType Name="services">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="logo" Type="varchar" MaxLength="191" />
-          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
         </EntityType>
@@ -253,35 +142,13 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
         <EntityContainer Name="SmartTechModelStoreContainer">
           <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="banners" EntityType="Self.banners" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="campaign_products" EntityType="Self.campaign_products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="campaigns" EntityType="Self.campaigns" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="configs" EntityType="Self.configs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="failed_jobs" EntityType="Self.failed_jobs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="migrations" EntityType="Self.migrations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_products" EntityType="Self.order_products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="personal_access_tokens" EntityType="Self.personal_access_tokens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_categories" EntityType="Self.product_categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_photos" EntityType="Self.product_photos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="product_services" EntityType="Self.product_services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="shippings" EntityType="Self.shippings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="password_reset_tokens" EntityType="Self.password_reset_tokens" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [password_reset_tokens].[email] AS [email], 
-    [password_reset_tokens].[token] AS [token], 
-    [password_reset_tokens].[created_at] AS [created_at]
-    FROM [dbo].[password_reset_tokens] AS [password_reset_tokens]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="password_resets" EntityType="Self.password_resets" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [password_resets].[email] AS [email], 
-    [password_resets].[token] AS [token], 
-    [password_resets].[created_at] AS [created_at]
-    FROM [dbo].[password_resets] AS [password_resets]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -316,64 +183,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="campaign_products">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="campaign_id" Type="Int32" Nullable="false" />
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="updated_at" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="campaign">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="campaign_for" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="campaign_name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="campaign_image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="image_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="percentage" Type="Int32" Nullable="false" />
-          <Property Name="start" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="end" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="updated_at" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="config">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="number" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="logo" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="updated_at" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="failed_jobs">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="uuid" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="connection" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="queue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="payload" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="failed_at" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="migration">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="migration1" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="batch" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="order_products">
           <Key>
             <PropertyRef Name="id" />
@@ -403,21 +212,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="personal_access_tokens">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tokenable_type" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tokenable_id" Type="Int64" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="token" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="abilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="last_used_at" Type="DateTime" Precision="3" />
-          <Property Name="expires_at" Type="DateTime" Precision="3" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="updated_at" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="product_categories">
           <Key>
             <PropertyRef Name="id" />
@@ -444,16 +238,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="product_services">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="service_id" Type="Int32" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="updated_at" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="product">
           <Key>
             <PropertyRef Name="id" />
@@ -474,16 +258,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
           <Property Name="seo_title" Type="String" MaxLength="191" FixedLength="false" Unicode="true" />
           <Property Name="seo_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="seo_tags" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="updated_at" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="service">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="logo" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
-          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
         </EntityType>
@@ -511,44 +285,16 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="password_reset_tokens">
-          <Key>
-            <PropertyRef Name="email" />
-            <PropertyRef Name="token" />
-          </Key>
-          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="token" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="password_resets">
-          <Key>
-            <PropertyRef Name="email" />
-            <PropertyRef Name="token" />
-          </Key>
-          <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="token" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityContainer Name="SmartTechEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admin" />
           <EntitySet Name="banners" EntityType="Self.banner" />
-          <EntitySet Name="campaign_products" EntityType="Self.campaign_products" />
-          <EntitySet Name="campaigns" EntityType="Self.campaign" />
-          <EntitySet Name="configs" EntityType="Self.config" />
-          <EntitySet Name="failed_jobs" EntityType="Self.failed_jobs" />
-          <EntitySet Name="migrations" EntityType="Self.migration" />
           <EntitySet Name="order_products" EntityType="Self.order_products" />
           <EntitySet Name="orders" EntityType="Self.order" />
-          <EntitySet Name="personal_access_tokens" EntityType="Self.personal_access_tokens" />
           <EntitySet Name="product_categories" EntityType="Self.product_categories" />
           <EntitySet Name="product_photos" EntityType="Self.product_photos" />
-          <EntitySet Name="product_services" EntityType="Self.product_services" />
           <EntitySet Name="products" EntityType="Self.product" />
-          <EntitySet Name="services" EntityType="Self.service" />
           <EntitySet Name="shippings" EntityType="Self.shipping" />
           <EntitySet Name="users" EntityType="Self.user" />
-          <EntitySet Name="password_reset_tokens" EntityType="Self.password_reset_tokens" />
-          <EntitySet Name="password_resets" EntityType="Self.password_resets" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -586,69 +332,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="campaign_products">
-            <EntityTypeMapping TypeName="SmartTechModel.campaign_products">
-              <MappingFragment StoreEntitySet="campaign_products">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="campaign_id" ColumnName="campaign_id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="campaigns">
-            <EntityTypeMapping TypeName="SmartTechModel.campaign">
-              <MappingFragment StoreEntitySet="campaigns">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="campaign_for" ColumnName="campaign_for" />
-                <ScalarProperty Name="campaign_name" ColumnName="campaign_name" />
-                <ScalarProperty Name="campaign_image" ColumnName="campaign_image" />
-                <ScalarProperty Name="image_type" ColumnName="image_type" />
-                <ScalarProperty Name="percentage" ColumnName="percentage" />
-                <ScalarProperty Name="start" ColumnName="start" />
-                <ScalarProperty Name="end" ColumnName="end" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="configs">
-            <EntityTypeMapping TypeName="SmartTechModel.config">
-              <MappingFragment StoreEntitySet="configs">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="number" ColumnName="number" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="logo" ColumnName="logo" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="failed_jobs">
-            <EntityTypeMapping TypeName="SmartTechModel.failed_jobs">
-              <MappingFragment StoreEntitySet="failed_jobs">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="uuid" ColumnName="uuid" />
-                <ScalarProperty Name="connection" ColumnName="connection" />
-                <ScalarProperty Name="queue" ColumnName="queue" />
-                <ScalarProperty Name="payload" ColumnName="payload" />
-                <ScalarProperty Name="exception" ColumnName="exception" />
-                <ScalarProperty Name="failed_at" ColumnName="failed_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="migrations">
-            <EntityTypeMapping TypeName="SmartTechModel.migration">
-              <MappingFragment StoreEntitySet="migrations">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="migration1" ColumnName="migration" />
-                <ScalarProperty Name="batch" ColumnName="batch" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="order_products">
             <EntityTypeMapping TypeName="SmartTechModel.order_products">
               <MappingFragment StoreEntitySet="order_products">
@@ -675,22 +358,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="personal_access_tokens">
-            <EntityTypeMapping TypeName="SmartTechModel.personal_access_tokens">
-              <MappingFragment StoreEntitySet="personal_access_tokens">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="tokenable_type" ColumnName="tokenable_type" />
-                <ScalarProperty Name="tokenable_id" ColumnName="tokenable_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="token" ColumnName="token" />
-                <ScalarProperty Name="abilities" ColumnName="abilities" />
-                <ScalarProperty Name="last_used_at" ColumnName="last_used_at" />
-                <ScalarProperty Name="expires_at" ColumnName="expires_at" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
@@ -724,17 +391,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="product_services">
-            <EntityTypeMapping TypeName="SmartTechModel.product_services">
-              <MappingFragment StoreEntitySet="product_services">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="service_id" ColumnName="service_id" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="SmartTechModel.product">
               <MappingFragment StoreEntitySet="products">
@@ -754,17 +410,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
                 <ScalarProperty Name="seo_title" ColumnName="seo_title" />
                 <ScalarProperty Name="seo_description" ColumnName="seo_description" />
                 <ScalarProperty Name="seo_tags" ColumnName="seo_tags" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="services">
-            <EntityTypeMapping TypeName="SmartTechModel.service">
-              <MappingFragment StoreEntitySet="services">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="logo" ColumnName="logo" />
-                <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
@@ -793,24 +438,6 @@ warning 6002: The table/view 'SmartTech.dbo.password_resets' does not have a pri
                 <ScalarProperty Name="remember_token" ColumnName="remember_token" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="password_reset_tokens">
-            <EntityTypeMapping TypeName="SmartTechModel.password_reset_tokens">
-              <MappingFragment StoreEntitySet="password_reset_tokens">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="token" ColumnName="token" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="password_resets">
-            <EntityTypeMapping TypeName="SmartTechModel.password_resets">
-              <MappingFragment StoreEntitySet="password_resets">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="token" ColumnName="token" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

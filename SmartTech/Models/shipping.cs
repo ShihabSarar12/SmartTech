@@ -12,15 +12,11 @@ namespace SmartTech.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class shipping
     {
         public long id { get; set; }
         public string name { get; set; }
-        public string email { get; set; }
-        public string number { get; set; }
-        public Nullable<System.DateTime> email_verified_at { get; set; }
-        public string password { get; set; }
-        public string remember_token { get; set; }
+        public decimal price { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     }
