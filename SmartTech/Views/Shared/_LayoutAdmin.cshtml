@@ -67,7 +67,7 @@
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/17.jpg" width="20" alt="profile" />
+                                    <img src="~/Content/backend/images/profile/17.jpg" width="20" alt="profile" />
                                     <div class="header-info">
                                         <span class="text-black"><strong>Peter Parkur</strong></span>
                                         <p class="fs-12 mb-0">Super Admin</p>
@@ -93,62 +93,57 @@
         ***********************************-->
         <div class="deznav">
             <div class="deznav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-networking"></i>
-                            <span class="nav-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-television"></i>
-                            <span class="nav-text">Apps</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-controls-3"></i>
-                            <span class="nav-text">Charts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-internet"></i>
-                            <span class="nav-text">Bootstrap</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-heart"></i>
-                            <span class="nav-text">Plugins</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="widget-basic.html" class="ai-icon" aria-expanded="false">
-                            <i class="flaticon-381-settings-2"></i>
-                            <span class="nav-text">Widget</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-notepad"></i>
-                            <span class="nav-text">Forms</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-network"></i>
-                            <span class="nav-text">Table</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-layer-1"></i>
-                            <span class="nav-text">Pages</span>
-                        </a>
-                    </li>
-                </ul>
+
+                    <ul class="metismenu mm-show" id="menu">
+                        <li class="">
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-381-networking"></i>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-381-background""></i>
+                                <span class="nav-text">Banner</span>
+                            </a>
+                            <ul aria-expanded="false" class="mm-collapse">
+                                <li><a href="./app-profile.html">Add Banner</a></li>
+                                <li><a href="./app-profile.html">View Banner</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-381-add-1"></i>
+                                <span class="nav-text">Shipping</span>
+                            </a>
+                            <ul aria-expanded="false" class="mm-collapse">
+                                <li><a href="./chart-flot.html">Add Shipping Address</a></li>
+                                <li><a href="./chart-morris.html">View Shipping Address</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-381-television"></i>
+                                <span class="nav-text">Products</span>
+                            </a>
+                            <ul aria-expanded="false" class="mm-collapse">
+                                <li><a href="./ui-accordion.html">Add Categories</a></li>
+                                <li><a href="./ui-accordion.html">Add Products</a></li>
+                                <li><a href="./ui-alert.html">View Products</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-381-notepad"></i>
+                                <span class="nav-text">Orders</span>
+                            </a>
+                            <ul aria-expanded="false" class="mm-collapse">
+                                <li><a href="./uc-select2.html">Pending Orders</a></li>
+                                <li><a href="./uc-select2.html">Processing Orders</a></li>
+                                <li><a href="./uc-select2.html">Dispatched Orders</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 <div class="copyright">
                     <p><strong>Admin Dashboard</strong> © 2024 All Rights Reserved</p>
                     <p>Made with <span class="heart"></span> by Synex Digital</p>
