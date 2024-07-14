@@ -43,11 +43,11 @@ namespace SmartTech.Controllers
         [HttpPost]
         public ActionResult Signin_Register(user user)
         {
-            /*if (user.password != user.confirm_password) 
+            if (user.password != user.confirm_password)
             {
                 ViewBag.Error = "Password doesn\'t match!!";
                 return View();
-            }*/
+            }
             user.remember_token = "Good";
             db.users.Add(user);
             db.SaveChanges();
