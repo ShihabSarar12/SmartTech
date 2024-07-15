@@ -27,22 +27,12 @@ namespace SmartTech.Models
     
         public virtual DbSet<admin> admins { get; set; }
         public virtual DbSet<banner> banners { get; set; }
-        public virtual DbSet<campaign_products> campaign_products { get; set; }
-        public virtual DbSet<campaign> campaigns { get; set; }
-        public virtual DbSet<config> configs { get; set; }
-        public virtual DbSet<failed_jobs> failed_jobs { get; set; }
-        public virtual DbSet<migration> migrations { get; set; }
         public virtual DbSet<order_products> order_products { get; set; }
         public virtual DbSet<order> orders { get; set; }
-        public virtual DbSet<personal_access_tokens> personal_access_tokens { get; set; }
         public virtual DbSet<product_categories> product_categories { get; set; }
         public virtual DbSet<product_photos> product_photos { get; set; }
-        public virtual DbSet<product_services> product_services { get; set; }
         public virtual DbSet<product> products { get; set; }
-        public virtual DbSet<service> services { get; set; }
         public virtual DbSet<shipping> shippings { get; set; }
         public virtual DbSet<user> users { get; set; }
-        public virtual DbSet<password_reset_tokens> password_reset_tokens { get; set; }
-        public virtual DbSet<password_resets> password_resets { get; set; }
     }
 }
