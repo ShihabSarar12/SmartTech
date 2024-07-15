@@ -1,0 +1,154 @@
+﻿@model SmartTech.Models.product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.category_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slugs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slugs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.short_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.short_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.featured)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.featured)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.popular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.popular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seo_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seo_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seo_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seo_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seo_tags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seo_tags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_at)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
