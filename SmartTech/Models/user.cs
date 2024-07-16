@@ -20,5 +20,6 @@ namespace SmartTech.Models
         public string number { get; set; }
         public string password { get; set; }
         public string confirm_password { get; set; }
+        public string image_url { get; set; }
     }
 }

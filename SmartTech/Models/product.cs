@@ -21,8 +21,6 @@ namespace SmartTech.Models
         public long discount { get; set; }
         public decimal price { get; set; }
         public int stock_status { get; set; }
-        public int featured { get; set; }
-        public int popular { get; set; }
         public int status { get; set; }
     }
 }

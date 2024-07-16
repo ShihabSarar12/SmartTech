@@ -11,7 +11,7 @@ namespace SmartTech.Controllers
 {
     public class HomeController : Controller
     {
-        private SmartTechEntities db = new SmartTechEntities();
+        private readonly SmartTechEntities db = new SmartTechEntities();
         public ActionResult Index()
         {
             ViewBag.User = Session["user"];
@@ -25,8 +25,6 @@ namespace SmartTech.Controllers
 
         public ActionResult Shop() 
         {
-            var products = db.products.ToList();
-            System.Diagnostics.Debug.WriteLine(products.Count);
             return View();
         }
 
@@ -50,7 +48,6 @@ namespace SmartTech.Controllers
                 ViewBag.Error = "Password doesn\'t match!!";
                 return View();
             }
-            user.remember_token = "Good";
             db.users.Add(user);
             db.SaveChanges();
             ViewBag.Error = "Signed up successfully";
