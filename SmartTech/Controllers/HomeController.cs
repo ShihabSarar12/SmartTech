@@ -25,6 +25,8 @@ namespace SmartTech.Controllers
 
         public ActionResult Shop() 
         {
+            var products = db.products.ToList();
+            System.Diagnostics.Debug.WriteLine(products.Count);
             return View();
         }
 
