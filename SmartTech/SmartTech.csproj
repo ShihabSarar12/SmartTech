@@ -6348,11 +6348,17 @@
     <Content Include="Views\AdminView.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+
+    <Content Include="Views\Admin\Banner.cshtml" />
+    <Content Include="Views\Admin\Shipping.cshtml" />
+    <Content Include="Views\Admin\AddBanner.cshtml" />
+
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
