@@ -3,6 +3,7 @@
     ViewBag.Title = "Wishlist";
     string name = ViewBag?.User?.name;
     string email = ViewBag?.User?.email;
+    string image_url = ViewBag?.User?.image_url;
 }
 
 <!-- ======================= Top Breadcrubms ======================== -->
@@ -30,9 +31,12 @@
             <div class="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods">
                 <div class="d-block border rounded mfliud-bot">
                     <div class="dashboard_author px-2 py-5">
-                        <div class="dash_auth_thumb circle p-1 border d-inline-flex mx-auto mb-2">
-                            <img src="~/Content/frontend/img/team-1.jpg" class="img-fluid circle" width="100" alt="" />
-                        </div>
+                        @if (image_url != null)
+                        {
+                            <div class="dash_auth_thumb circle p-1 border d-inline-flex mx-auto mb-2">
+                                <img src="@image_url" class="img-fluid circle" width="100" alt="" />
+                            </div>
+                        }
                         <div class="dash_caption">
                             <h4 class="fs-md ft-medium mb-0 lh-1">@name</h4>
                             <span class="text-muted smalls">@email</span>
