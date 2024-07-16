@@ -8,14 +8,6 @@
     <div class="container">
         <div class="row justify-content-between">
 
-            <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12">
-                <div class="quick_view_slide">
-                    <div class="single_view_slide"><img src="@Url.Content(Model.link)" class="img-fluid rounded" alt="" /></div>
-                    <div class="single_view_slide"><img src="@Url.Content(Model.link)" class="img-fluid rounded" alt="" /></div>
-                    <div class="single_view_slide"><img src="@Url.Content(Model.link)" class="img-fluid rounded" alt="" /></div>
-                    <div class="single_view_slide"><img src="@Url.Content(Model.link)" class="img-fluid rounded" alt="" /></div>
-                </div>
-            </div>
 
             <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12">
                 <div class="prd_details pl-3">
@@ -37,7 +29,6 @@
                     </div>
 
                     <div class="prt_03 mb-4">
-                        <p>@Model.short_description</p>
                     </div>
 
                     <div class="prt_05 mb-4">
@@ -110,7 +101,6 @@
                     <!-- Description Content -->
                     <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                         <div class="description_info">
-                            <p class="p-0 mb-2">@Model.short_description</p>
                             <p class="p-0">@Model.description</p>
                         </div>
                     </div>

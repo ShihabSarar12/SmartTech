@@ -6,7 +6,7 @@ namespace SmartTech.Controllers
 {
     public class HomeController : Controller
     {
-        private SmartTechEntities db = new SmartTechEntities();
+        private readonly SmartTechEntities db = new SmartTechEntities();
         public ActionResult Index()
         {
             ViewBag.User = Session["user"];
@@ -20,8 +20,6 @@ namespace SmartTech.Controllers
 
         public ActionResult Shop()
         {
-            var products = db.products.ToList();
-            System.Diagnostics.Debug.WriteLine(products.Count);
             return View();
         }
 
@@ -40,7 +38,7 @@ namespace SmartTech.Controllers
         [HttpPost]
         public ActionResult Signin_Register(user user)
         {
-            if (user.password != user.confirm_password)
+            if (user.password != user.confirm_password) 
             {
                 ViewBag.Error = "Password doesn\'t match!!";
                 return View();

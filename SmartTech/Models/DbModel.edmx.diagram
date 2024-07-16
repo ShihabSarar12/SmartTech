@@ -4,16 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d23374d0f2f741648b6a4339c9fb1a6a" Name="Diagram1">
+
+      <Diagram DiagramId="582d7e8e18d24ad4b9bffa5bca5d36dc" Name="Diagram1">
+
         <EntityTypeShape EntityType="SmartTechModel.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartTechModel.banner" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartTechModel.order_products" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartTechModel.order" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartTechModel.product_categories" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartTechModel.product_photos" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.product" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.shipping" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.user" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+
+        <EntityTypeShape EntityType="SmartTechModel.shipping" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.user" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.product" Width="1.5" PointX="5.375" PointY="6.75" />
+
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
