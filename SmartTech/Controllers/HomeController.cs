@@ -1,11 +1,6 @@
 ﻿using SmartTech.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Services.Description;
 
 namespace SmartTech.Controllers
 {
@@ -23,7 +18,7 @@ namespace SmartTech.Controllers
             return View();
         }
 
-        public ActionResult Shop() 
+        public ActionResult Shop()
         {
             var products = db.products.ToList();
             System.Diagnostics.Debug.WriteLine(products.Count);
@@ -50,7 +45,6 @@ namespace SmartTech.Controllers
                 ViewBag.Error = "Password doesn\'t match!!";
                 return View();
             }
-            user.remember_token = "Good";
             db.users.Add(user);
             db.SaveChanges();
             ViewBag.Error = "Signed up successfully";
