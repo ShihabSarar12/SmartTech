@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace SmartTech.Controllers
 {
@@ -13,5 +9,18 @@ namespace SmartTech.Controllers
         {
             return View();
         }
+        public ActionResult Banner()
+        {
+            return View();
+        }
+        public ActionResult AddBanner()
+        {
+            return View();
+        }
+        public ActionResult Shipping()
+        {
+            return View();
+        }
+
     }
 }
