@@ -22,9 +22,6 @@ namespace SmartTech.Models
         public string address { get; set; }
         public long shipping_id { get; set; }
         public decimal price { get; set; }
-        public string message { get; set; }
         public string status { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
-        public Nullable<System.DateTime> updated_at { get; set; }
     }
 }

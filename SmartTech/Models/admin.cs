@@ -19,10 +19,6 @@ namespace SmartTech.Models
         public string profile { get; set; }
         public string email { get; set; }
         public string number { get; set; }
-        public string role { get; set; }
         public string password { get; set; }
-        public string remember_token { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
-        public Nullable<System.DateTime> updated_at { get; set; }
     }
 }

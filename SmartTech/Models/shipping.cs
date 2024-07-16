@@ -17,7 +17,5 @@ namespace SmartTech.Models
         public long id { get; set; }
         public string name { get; set; }
         public decimal price { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
-        public Nullable<System.DateTime> updated_at { get; set; }
     }
 }
