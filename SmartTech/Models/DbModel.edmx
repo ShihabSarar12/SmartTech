@@ -177,6 +177,7 @@
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="product_id" Type="Int32" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
+
         </EntityType>
         <EntityType Name="shipping">
           <Key>
@@ -293,6 +294,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="image" ColumnName="image" />
+
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -314,6 +316,7 @@
                 <ScalarProperty Name="number" ColumnName="number" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="image_url" ColumnName="image_url" />
+
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -328,6 +331,7 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
