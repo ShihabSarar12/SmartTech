@@ -17,20 +17,12 @@ namespace SmartTech.Models
         public long id { get; set; }
         public int category_id { get; set; }
         public string name { get; set; }
-        public string slugs { get; set; }
-        public string short_description { get; set; }
         public string description { get; set; }
         public long discount { get; set; }
         public decimal price { get; set; }
-        public string link { get; set; }
         public int stock_status { get; set; }
         public int featured { get; set; }
         public int popular { get; set; }
         public int status { get; set; }
-        public string seo_title { get; set; }
-        public string seo_description { get; set; }
-        public string seo_tags { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
-        public Nullable<System.DateTime> updated_at { get; set; }
     }
 }

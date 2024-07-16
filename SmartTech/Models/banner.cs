@@ -19,8 +19,5 @@ namespace SmartTech.Models
         public string banner_title { get; set; }
         public string banner_description { get; set; }
         public string banner_image { get; set; }
-        public string link { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
-        public Nullable<System.DateTime> updated_at { get; set; }
     }
 }

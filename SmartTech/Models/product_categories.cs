@@ -17,13 +17,7 @@ namespace SmartTech.Models
         public long id { get; set; }
         public Nullable<int> parent_category_id { get; set; }
         public string category_name { get; set; }
-        public string slugs { get; set; }
         public string category_image { get; set; }
         public string category_icon { get; set; }
-        public string seo_title { get; set; }
-        public string seo_description { get; set; }
-        public string seo_tags { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
-        public Nullable<System.DateTime> updated_at { get; set; }
     }
 }
