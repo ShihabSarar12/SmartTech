@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -12,12 +13,13 @@ namespace SmartTech.Controllers
 {
     public class ProductsController : Controller
     {
-        private SmartTechEntities db = new SmartTechEntities();
+        private readonly SmartTechEntities db = new SmartTechEntities();
 
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.products.ToList());
+            var products = db.products.Include(p => p.product_photos).ToList();
+            return View(products);
         }
 
         // GET: Products/Details/5
@@ -27,9 +29,16 @@ namespace SmartTech.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            product product = db.products.Find(id);
-            //var product_image = db.products.SqlQuery($"SELECT image FROM product_photos WHERE product_id={product.id}").ToList();
-            //System.Diagnostics.Debug.WriteLine(product.id);
+            var product = db.products
+                .Where(p => p.id == id)
+                .Select(p => new ProductWithImages
+                {
+                    Product = p,
+                    ProductPhotos = p.product_photos.Select(pp => pp.image).ToList()
+                })
+                .FirstOrDefault();
+            
+            System.Diagnostics.Debug.WriteLine(product);
             if (product == null)
             {
                 return HttpNotFound();

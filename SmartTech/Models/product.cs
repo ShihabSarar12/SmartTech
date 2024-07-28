@@ -14,6 +14,12 @@ namespace SmartTech.Models
     
     public partial class product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public product()
+        {
+            this.product_photos = new HashSet<product_photos>();
+        }
+    
         public long id { get; set; }
         public int category_id { get; set; }
         public string name { get; set; }
@@ -22,5 +28,8 @@ namespace SmartTech.Models
         public decimal price { get; set; }
         public int stock_status { get; set; }
         public int status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<product_photos> product_photos { get; set; }
     }
 }

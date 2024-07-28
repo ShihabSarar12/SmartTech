@@ -296,12 +296,21 @@
                             <!-- Single -->
                             //string ImagePath = Convert.ToString(@Html.DisplayFor(modelItem => item.link));
                             string Name = Convert.ToString(@Html.DisplayFor(modelItem => item.name));
+                            var Images = item.product_photos.ToList();
                             <a class="col-xl-4 col-lg-4 col-md-6 col-6" href="Products/Details/@item.id">
                                 <div class="product_grid card b-0">
                                     <div class="badge bg-info text-white position-absolute ft-regular ab-left text-upper">New</div>
                                     <div class="card-body p-0">
                                         <div class="shop_thumb position-relative">
-                                            @*<img class="card-img-top" src="@Url.Content(ImagePath)" alt="...">*@
+                                            @if (item.product_photos.Any())
+                                            {
+                                                var firstPhoto = item.product_photos.First();
+                                                <img class="card-img-top" src="@Url.Content(firstPhoto.image)" alt="Product Photo" />
+                                            }
+                                            else
+                                            {
+                                                <p class="card-img-top">No Image available</p>
+                                            }
                                         </div>
                                     </div>
                                     <div class="card-footer b-0 p-0 pt-2 bg-white">
@@ -314,7 +323,7 @@
                             </a>
                         }
 
-                        </div>
+                    </div>
                     <!-- row -->
                 </div>
             </div>

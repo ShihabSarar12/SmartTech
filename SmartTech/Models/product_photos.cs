@@ -15,7 +15,9 @@ namespace SmartTech.Models
     public partial class product_photos
     {
         public long id { get; set; }
-        public int product_id { get; set; }
+        public long product_id { get; set; }
         public string image { get; set; }
+    
+        public virtual product product { get; set; }
     }
 }
