@@ -28,6 +28,8 @@ namespace SmartTech.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             product product = db.products.Find(id);
+            //var product_image = db.products.SqlQuery($"SELECT image FROM product_photos WHERE product_id={product.id}").ToList();
+            //System.Diagnostics.Debug.WriteLine(product.id);
             if (product == null)
             {
                 return HttpNotFound();
