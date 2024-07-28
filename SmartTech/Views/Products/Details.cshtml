@@ -1,4 +1,4 @@
-﻿@model SmartTech.Models.product
+﻿@model SmartTech.Models.ProductWithImages
 
 @{
     ViewBag.Title = "Details";
@@ -7,14 +7,22 @@
 <section class="middle">
     <div class="container">
         <div class="row justify-content-between">
-
+            <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12">
+                <div class="quick_view_slide">
+                    @*Need to fix the Design*@
+                    @foreach (var product_photo in Model.ProductPhotos)
+                    {
+                        <div class="single_view_slide h-25"><img src="@Url.Content(product_photo)" class="img-fluid rounded" alt="" /></div>
+                    }
+                </div>
+            </div>
 
             <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12">
                 <div class="prd_details pl-3">
 
                     <div class="prt_01 mb-1"><span class="text-light bg-info rounded px-2 py-1">Dresses</span></div>
                     <div class="prt_02 mb-3">
-                        <h2 class="ft-bold mb-1">@Html.DisplayFor(model => model.name)</h2>
+                        <h2 class="ft-bold mb-1">@Model.Product.name</h2>
                         <div class="text-left">
                             <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
                                 <i class="fas fa-star filled"></i>
@@ -24,7 +32,7 @@
                                 <i class="fas fa-star"></i>
                                 <span class="small">(412 Reviews)</span>
                             </div>
-                            <div class="elis_rty"><span class="ft-bold theme-cl fs-lg mr-2">$@Html.DisplayFor(model => model.price)</span></div>
+                            <div class="elis_rty"><span class="ft-bold theme-cl fs-lg mr-2">$@Model.Product.price</span></div>
                         </div>
                     </div>
 
@@ -101,7 +109,7 @@
                     <!-- Description Content -->
                     <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                         <div class="description_info">
-                            <p class="p-0">@Model.description</p>
+                            <p class="p-0">@Model.Product.description</p>
                         </div>
                     </div>
 
