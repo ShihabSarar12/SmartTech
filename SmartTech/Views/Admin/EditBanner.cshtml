@@ -1,7 +1,7 @@
 ﻿@model SmartTech.Models.banner
 
 @{
-    ViewBag.Title = "Add Banner";
+    ViewBag.Title = "Edit Banner";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -9,13 +9,14 @@
     <div class="col-xl-12 col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Add Banner</h4>
+                <h4 class="card-title">Edit Banner</h4>
             </div>
             <div class="card-body">
                 <div class="basic-form">
-                    @using (Html.BeginForm("AddBanner", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("EditBanner", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.id)
 
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Banner Category</label>
@@ -44,9 +45,12 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Banner Image</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" name="bannerImage" accept="image/jpeg, image/jpg, image/png" />
+                                <input type="file" class="form-control" name="bannerImage" />
                                 @Html.ValidationMessage("bannerImage", "", new { @class = "text-danger" })
-                                @Html.ValidationMessageFor(m => m.banner_image, "", new { @class = "text-danger" })
+                                @if (Model.banner_image != null)
+                                {
+                                    <img src="~/Content/uploads/frontend/banners/@Model.banner_image" alt="Banner Image" style="width: 100px; height: auto;" />
+                                }
                             </div>
                         </div>
 
