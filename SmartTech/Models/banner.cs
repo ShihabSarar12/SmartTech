@@ -11,13 +11,22 @@ namespace SmartTech.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class banner
     {
         public long id { get; set; }
+
+        [Required(ErrorMessage = "Banner category is required")]
         public string banner_category { get; set; }
+
+        [Required(ErrorMessage = "Banner title is required")]
         public string banner_title { get; set; }
+
+        [Required(ErrorMessage = "Banner description is required")]
         public string banner_description { get; set; }
+
+        [Required(ErrorMessage = "Banner Image is required")]
         public string banner_image { get; set; }
     }
 }
