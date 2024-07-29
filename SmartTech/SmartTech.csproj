@@ -167,6 +167,7 @@
     <Compile Include="Models\product.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductWithImages.cs" />
     <Compile Include="Models\product_categories.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

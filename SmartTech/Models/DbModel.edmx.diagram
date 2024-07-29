@@ -4,7 +4,6 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-
       <Diagram DiagramId="582d7e8e18d24ad4b9bffa5bca5d36dc" Name="Diagram1" ZoomLevel="73">
 
         <EntityTypeShape EntityType="SmartTechModel.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -17,6 +16,7 @@
         <EntityTypeShape EntityType="SmartTechModel.shipping" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartTechModel.user" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartTechModel.product" Width="1.5" PointX="8.875" PointY="1.375" />
+        <AssociationConnector Association="SmartTechModel.FK_ProductPhotos_Products" ManuallyRouted="false" />
 
       </Diagram>
     </edmx:Diagrams>
