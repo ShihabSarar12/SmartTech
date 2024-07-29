@@ -15,16 +15,14 @@ namespace SmartTech.Controllers
     {
         private readonly SmartTechEntities db = new SmartTechEntities();
 
-        public ActionResult AddToCart()
+        [HttpPost]
+        public ActionResult AddToCart(long qnt)
         {
-            // insert into orders using Session["user"]
             var product = Session["product"] as product;
             var user = Session["user"] as user;
-            // create user.completed_order
-            // generate order_id using user.name and user.completed_order
-            // update price by adding all previous products
-            // update order_products calculating price and qnt
-            // update status to "Cart"
+            cart cart = new cart(product.id, user.id, qnt, product.price);
+            db.carts.Add(cart);
+            db.SaveChanges();
             return RedirectToAction("Details", new { id = Session["product_id"] });
         }
         // GET: Products

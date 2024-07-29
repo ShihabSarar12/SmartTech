@@ -4,19 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d80d32744a0045258694ed277e347f84" Name="Diagram1">
-        <EntityTypeShape EntityType="SmartTechModel.admin" Width="1.5" PointX="7.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.banner" Width="1.5" PointX="7.375" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.order_products" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.order" Width="1.5" PointX="5.125" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.product_categories" Width="1.5" PointX="0.875" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.product_photos" Width="1.5" PointX="0.875" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.product" Width="1.5" PointX="3.125" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.shipping" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartTechModel.user" Width="1.5" PointX="7.375" PointY="6" IsExpanded="true" />
+      <Diagram DiagramId="5f9c9a6a881a4fefaf95825307701c65" Name="Diagram1">
+        <EntityTypeShape EntityType="SmartTechModel.admin" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.banner" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.cart" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.order_products" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.order" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.product_categories" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.product_photos" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.product" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.shipping" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartTechModel.user" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SmartTechModel.FK__cart__product_id__10216507" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartTechModel.FK__cart__user_id__11158940" ManuallyRouted="false" />
         <AssociationConnector Association="SmartTechModel.FK_order_id" ManuallyRouted="false" />
         <AssociationConnector Association="SmartTechModel.FK_product_id" ManuallyRouted="false" />
         <AssociationConnector Association="SmartTechModel.FK_shipping_id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartTechModel.FK_user_id" ManuallyRouted="false" />
         <AssociationConnector Association="SmartTechModel.category_id" ManuallyRouted="false" />
         <AssociationConnector Association="SmartTechModel.FK_ProductPhotos_Products" ManuallyRouted="false" />
       </Diagram>
