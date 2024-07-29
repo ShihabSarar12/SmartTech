@@ -19,5 +19,8 @@ namespace SmartTech.Models
         public long product_id { get; set; }
         public decimal price { get; set; }
         public long qnt { get; set; }
+    
+        public virtual order order { get; set; }
+        public virtual product product { get; set; }
     }
 }

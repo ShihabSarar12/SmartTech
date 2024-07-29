@@ -16,11 +16,6 @@ namespace SmartTech.Models
     public partial class banner
     {
         public long id { get; set; }
-
-        [Required(ErrorMessage = "Banner category is required")]
-        public string banner_category { get; set; }
-
-        [Required(ErrorMessage = "Banner title is required")]
         public string banner_title { get; set; }
 
         [Required(ErrorMessage = "Banner description is required")]

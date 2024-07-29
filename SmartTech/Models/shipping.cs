@@ -14,8 +14,17 @@ namespace SmartTech.Models
     
     public partial class shipping
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public shipping()
+        {
+            this.orders = new HashSet<order>();
+        }
+    
         public long id { get; set; }
         public string name { get; set; }
         public decimal price { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order> orders { get; set; }
     }
 }
