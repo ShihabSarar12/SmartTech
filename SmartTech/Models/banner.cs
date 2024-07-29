@@ -15,7 +15,6 @@ namespace SmartTech.Models
     public partial class banner
     {
         public long id { get; set; }
-        public string banner_category { get; set; }
         public string banner_title { get; set; }
         public string banner_description { get; set; }
         public string banner_image { get; set; }

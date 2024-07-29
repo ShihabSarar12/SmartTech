@@ -18,9 +18,10 @@ namespace SmartTech.Controllers
         public ActionResult AddToCart()
         {
             // insert into orders using Session["user"]
-            var product = Session["product"];
-            var user = Session["user"];
-            // remove shipping 
+            var product = Session["product"] as product;
+            var user = Session["user"] as user;
+            // create user.completed_order
+            // generate order_id using user.name and user.completed_order
             // update price by adding all previous products
             // update order_products calculating price and qnt
             // update status to "Cart"

@@ -21,7 +21,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="banner_category" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="banner_title" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="banner_description" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="banner_image" Type="varchar" MaxLength="191" />
@@ -41,7 +40,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="order_id" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="number" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="191" />
@@ -55,7 +53,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="parent_category_id" Type="int" />
           <Property Name="category_name" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="category_image" Type="varchar" MaxLength="191" />
           <Property Name="category_icon" Type="varchar" MaxLength="191" />
@@ -73,7 +70,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="bigint" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="discount" Type="bigint" Nullable="false" />
@@ -100,6 +97,42 @@
           <Property Name="password" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="image_url" Type="nvarchar(max)" />
         </EntityType>
+        <Association Name="category_id">
+          <End Role="product_categories" Type="Self.product_categories" Multiplicity="1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_id">
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
+          <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_products">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_id">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_products">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductPhotos_Products">
           <End Role="products" Type="Self.products" Multiplicity="1" />
           <End Role="product_photos" Type="Self.product_photos" Multiplicity="*" />
@@ -109,6 +142,18 @@
             </Principal>
             <Dependent Role="product_photos">
               <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shipping_id">
+          <End Role="shippings" Type="Self.shippings" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="shipping_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -122,9 +167,25 @@
           <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="shippings" EntityType="Self.shippings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="category_id" Association="Self.category_id">
+            <End Role="product_categories" EntitySet="product_categories" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_id" Association="Self.FK_order_id">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="order_products" EntitySet="order_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_id" Association="Self.FK_product_id">
+            <End Role="products" EntitySet="products" />
+            <End Role="order_products" EntitySet="order_products" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductPhotos_Products" Association="Self.FK_ProductPhotos_Products">
             <End Role="products" EntitySet="products" />
             <End Role="product_photos" EntitySet="product_photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shipping_id" Association="Self.FK_shipping_id">
+            <End Role="shippings" EntitySet="shippings" />
+            <End Role="orders" EntitySet="orders" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -148,7 +209,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="banner_category" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="banner_title" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="banner_description" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="banner_image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
@@ -162,13 +222,14 @@
           <Property Name="product_id" Type="Int64" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="qnt" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_id" FromRole="order_products" ToRole="orders" />
+          <NavigationProperty Name="product" Relationship="Self.FK_product_id" FromRole="order_products" ToRole="products" />
         </EntityType>
         <EntityType Name="order">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="order_id" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="number" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
@@ -176,16 +237,18 @@
           <Property Name="shipping_id" Type="Int64" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="order_products" Relationship="Self.FK_order_id" FromRole="orders" ToRole="order_products" />
+          <NavigationProperty Name="shipping" Relationship="Self.FK_shipping_id" FromRole="orders" ToRole="shippings" />
         </EntityType>
         <EntityType Name="product_categories">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="parent_category_id" Type="Int32" />
           <Property Name="category_name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="category_image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
           <Property Name="category_icon" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="products" Relationship="Self.category_id" FromRole="product_categories" ToRole="products" />
         </EntityType>
         <EntityType Name="product_photos">
           <Key>
@@ -201,13 +264,15 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int64" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="discount" Type="Int64" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stock_status" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="order_products" Relationship="Self.FK_product_id" FromRole="products" ToRole="order_products" />
+          <NavigationProperty Name="product_categories" Relationship="Self.category_id" FromRole="products" ToRole="product_categories" />
           <NavigationProperty Name="product_photos" Relationship="Self.FK_ProductPhotos_Products" FromRole="products" ToRole="product_photos" />
         </EntityType>
         <EntityType Name="shipping">
@@ -217,6 +282,7 @@
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_shipping_id" FromRole="shippings" ToRole="orders" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -229,6 +295,54 @@
           <Property Name="password" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="image_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_order_id">
+          <End Role="orders" Type="Self.order" Multiplicity="1" />
+          <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_products">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_id">
+          <End Role="products" Type="Self.product" Multiplicity="1" />
+          <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_products">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shipping_id">
+          <End Role="shippings" Type="Self.shipping" Multiplicity="1" />
+          <End Role="orders" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="shipping_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="category_id">
+          <End Role="product_categories" Type="Self.product_categories" Multiplicity="1" />
+          <End Role="products" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductPhotos_Products">
           <End Role="products" Type="Self.product" Multiplicity="1" />
           <End Role="product_photos" Type="Self.product_photos" Multiplicity="*" />
@@ -251,6 +365,22 @@
           <EntitySet Name="products" EntityType="Self.product" />
           <EntitySet Name="shippings" EntityType="Self.shipping" />
           <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_order_id" Association="Self.FK_order_id">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="order_products" EntitySet="order_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_id" Association="Self.FK_product_id">
+            <End Role="products" EntitySet="products" />
+            <End Role="order_products" EntitySet="order_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shipping_id" Association="Self.FK_shipping_id">
+            <End Role="shippings" EntitySet="shippings" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="category_id" Association="Self.category_id">
+            <End Role="product_categories" EntitySet="product_categories" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductPhotos_Products" Association="Self.FK_ProductPhotos_Products">
             <End Role="products" EntitySet="products" />
             <End Role="product_photos" EntitySet="product_photos" />
@@ -278,7 +408,6 @@
             <EntityTypeMapping TypeName="SmartTechModel.banner">
               <MappingFragment StoreEntitySet="banners">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="banner_category" ColumnName="banner_category" />
                 <ScalarProperty Name="banner_title" ColumnName="banner_title" />
                 <ScalarProperty Name="banner_description" ColumnName="banner_description" />
                 <ScalarProperty Name="banner_image" ColumnName="banner_image" />
@@ -300,7 +429,6 @@
             <EntityTypeMapping TypeName="SmartTechModel.order">
               <MappingFragment StoreEntitySet="orders">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="number" ColumnName="number" />
                 <ScalarProperty Name="email" ColumnName="email" />
@@ -315,7 +443,6 @@
             <EntityTypeMapping TypeName="SmartTechModel.product_categories">
               <MappingFragment StoreEntitySet="product_categories">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="parent_category_id" ColumnName="parent_category_id" />
                 <ScalarProperty Name="category_name" ColumnName="category_name" />
                 <ScalarProperty Name="category_image" ColumnName="category_image" />
                 <ScalarProperty Name="category_icon" ColumnName="category_icon" />
