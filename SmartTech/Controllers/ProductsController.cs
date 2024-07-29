@@ -15,6 +15,17 @@ namespace SmartTech.Controllers
     {
         private readonly SmartTechEntities db = new SmartTechEntities();
 
+        public ActionResult AddToCart()
+        {
+            // insert into orders using Session["user"]
+            var product = Session["product"];
+            var user = Session["user"];
+            // remove shipping 
+            // update price by adding all previous products
+            // update order_products calculating price and qnt
+            // update status to "Cart"
+            return RedirectToAction("Details", new { id = Session["product_id"] });
+        }
         // GET: Products
         public ActionResult Index()
         {
@@ -29,6 +40,8 @@ namespace SmartTech.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Session["product_id"] = id;
+            Session["product"] = db.products.Find(id);
             var product = db.products
                 .Where(p => p.id == id)
                 .Select(p => new ProductWithImages

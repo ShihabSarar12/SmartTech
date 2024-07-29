@@ -10,21 +10,25 @@ namespace SmartTech.Controllers
         public ActionResult Index()
         {
             ViewBag.User = Session["user"];
+            Session["prev_page"] = "Index";
             return View();
         }
 
         public ActionResult About()
         {
+            Session["prev_page"] = "About";
             return View();
         }
 
         public ActionResult Shop()
         {
+            Session["prev_page"] = "Shop";
             return View();
         }
 
         public ActionResult Contact()
         {
+            Session["prev_page"] = "Contact";
             return View();
         }
 
@@ -66,7 +70,9 @@ namespace SmartTech.Controllers
                 return View();
             }
             Session["user"] = IsValidUser;
-            return RedirectToAction("Index");
+            if (Session["prev_page"] == null)
+                return View();
+            return RedirectToAction(Session["prev_page"].ToString());
         }
 
     }
