@@ -76,8 +76,6 @@ namespace SmartTech.Controllers
 
                 /*db.Entry(banner).State = EntityState.Modified;
                 db.banners.Add(banner);*/
-                db.banners.
-                db.SaveChanges();
                 return RedirectToAction("Banner");
             }
             return View(banner);
