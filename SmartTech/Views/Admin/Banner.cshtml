@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<SmartTech.Models.banner>
+
 @{
     ViewBag.Title = "Banner";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -24,24 +25,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong>01</strong></td>
-                                <td>Hot sale</td>
-                                <td>Iphone 10</td>
-                                <td>Iphone sdsddsdsd</td>
-                                <td>Iphone sdsddsdsd</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
-                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><strong>@item.id</strong></td>
+                                    <td>@item.banner_category</td>
+                                    <td>@item.banner_title</td>
+                                    <td>@item.banner_description</td>
+                                    <td>
+                                        <img src="~/Content/uploads/frontend/banners/@item.banner_image" alt="Banner Image" style="width: 100px; height: auto;" />
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
+                                                <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                        <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                        <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="@Url.Action("EditBanner", "Admin", new { id = item.id })">Edit</a>
+                                                <a class="dropdown-item" href="@Url.Action("DeleteBanner", "Admin", new { id = item.id })">Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
