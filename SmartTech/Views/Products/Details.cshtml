@@ -53,9 +53,15 @@
                             </div>
                             <div class="col-12 col-lg">
                                 <!-- Submit -->
-                                <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
-                                    <i class="lni lni-shopping-basket mr-2"></i>Add to Cart
-                                </button>
+                                <form method="post" action="/Products/AddToCart">
+                                    <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
+                                        <i class="lni lni-shopping-basket mr-2"></i>Add to Cart
+                                    </button>
+                                </form>
+                                @if (Session["user"] == null)
+                                {
+                                    <h5 class="text-danger">You need to login before you can add to cart!</h5>
+                                }
                             </div>
                             <div class="col-12 col-lg-auto">
                                 <!-- Wishlist -->

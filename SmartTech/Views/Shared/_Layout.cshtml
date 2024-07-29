@@ -1,6 +1,6 @@
-﻿@{ 
-    var user = ViewBag.User;
-    string name = user?.name;
+﻿@using SmartTech.Models
+@{
+    var user = Session["user"] as user;
 }
 <!DOCTYPE html>
 <html lang="zxx">
@@ -60,7 +60,7 @@
                                 <span class="iso_code medium text-muted">English</span>
                             </a>
                         </div>
-                        @if (user == null)
+                        @if (Session["user"] == null)
                         {
                             <div>
                                 <div class="currency-selector dropdown js-dropdown float-right mr-3">
@@ -73,7 +73,7 @@
                         }
                         else
                         {
-                            <p class="m-0 p-0">Welcome <i class="lni lni-user mr-1"></i><b>@Html.ActionLink(name, "index", "Profile")</b></p>
+                            <p class="m-0 p-0">Welcome <i class="lni lni-user mr-1"></i><b>@Html.ActionLink(user.name, "index", "Profile")</b></p>
                         }
                     </div>
 
