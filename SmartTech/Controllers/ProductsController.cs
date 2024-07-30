@@ -15,6 +15,14 @@ namespace SmartTech.Controllers
     {
         private readonly SmartTechEntities db = new SmartTechEntities();
 
+        public ActionResult DeleteCart(long id)
+        {
+            var cartItem = db.carts.FirstOrDefault(c => c.id == id);
+            db.carts.Remove(cartItem);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public ActionResult AddToCart(long qnt)
         {
@@ -28,6 +36,37 @@ namespace SmartTech.Controllers
         // GET: Products
         public ActionResult Index()
         {
+            var user = Session["user"] as user;
+            if (user != null)
+            {
+                var query = from cart in db.carts
+                            where cart.user_id == user.id
+                            join product in db.products
+                            on cart.product_id equals product.id
+                            join photo in db.product_photos
+                            on product.id equals photo.product_id into photos
+                            from photo in photos
+                            .GroupBy(p => p.product_id)
+                            .Select(g => g.FirstOrDefault())
+                            .DefaultIfEmpty()
+                            select new CartWithImages
+                            {
+                                CartId = cart.id,
+                                Quantity = cart.qnt,
+                                ProductId = product.id,
+                                Name = product.name,
+                                Price = product.price,
+                                Image = photo != null ? photo.image : null
+                            };
+
+                var cartWithImages = query.ToList();
+                Session["cart_with_images"] = cartWithImages;
+            }
+            else
+            {
+                Session["user"] = null;
+                Session["cart_with_images"] = null;
+            }
             var products = db.products.Include(p => p.product_photos).ToList();
             return View(products);
         }

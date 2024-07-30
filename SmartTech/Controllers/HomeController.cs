@@ -35,7 +35,12 @@ namespace SmartTech.Controllers
                             };
 
                 var cartWithImages = query.ToList();
-                ViewBag.Cart = cartWithImages;
+                Session["cart_with_images"] = cartWithImages;
+            }
+            else
+            {
+                Session["user"] = null;
+                Session["cart_with_images"] = null;
             }
             return View();
         }

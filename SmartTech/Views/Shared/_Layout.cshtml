@@ -1,6 +1,7 @@
 ﻿@using SmartTech.Models
 @{
     var user = Session["user"] as user;
+    var cartWithImages = Session["cart_with_images"] as List<CartWithImages>;
 }
 <!DOCTYPE html>
 <html lang="zxx">
@@ -121,9 +122,9 @@
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <i class="fas fa-shopping-basket fs-lg"></i>
                                                 <span class="dn-counter theme-bg">
-                                                @if (ViewBag.Cart != null) 
+                                                @if (Session["cart_with_images"] != null && Session["user"] != null) 
                                                 {
-                                                    <span>@ViewBag.Cart.Count</span>
+                                                    <span>@cartWithImages.Count</span>
                                                 }
                                                 else 
                                                 {
@@ -393,15 +394,18 @@
                 <div class="right-ch-sideBar">
 
                     <div class="cart_select_items py-2">
-                        @if (ViewBag.Cart == null)
+                        @*Fix Shop Cart section*@
+                        @if (Session["user"] == null && Session["cart_with_images"] == null)
                         {
                             <h4 class="px-3 text-danger">You need to login to access Cart</h4>
                         }
                         else
                         {
-                            foreach (var product in ViewBag.Cart)
+                            decimal subtotal = 0;
+                            foreach (var product in cartWithImages)
                             {
                                 <!-- Single Item -->
+                                subtotal += (product.Price * product.Quantity);
                                 <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
                                     <div class="cart_single d-flex align-items-center">
                                         <div class="cart_selected_single_thumb">
@@ -413,22 +417,23 @@
                                             <h4 class="fs-sm ft-medium mb-0 lh-1">Quantity: @product.Quantity</h4>
                                         </div>
                                     </div>
-                                    <div class="fls_last"><button class="close_slide gray"><i class="ti-close"></i></button></div>
+                                    <div class="fls_last"><a href="@Url.Action("DeleteCart", "Products", new { id = product.CartId })" class="close_slide gray"><i class="ti-close"></i></a></div>
                                 </div>
                             }
+                            @*Fix subtotal section*@
+                            <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
+                                <h6 class="mb-0">Subtotal</h6>
+                                <h3 class="mb-0 ft-medium">$@subtotal</h3>
+                            </div>
+
+                            <div class="cart_action px-3 py-3">
+                                <div class="form-group">
+                                    <button type="button" class="btn d-block full-width btn-dark-light">Check Out</button>
+                                </div>
+                            </div>
                         }
                     </div>
-                    @*Fix subtotal section*@
-                    <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
-                        <h6 class="mb-0">Subtotal</h6>
-                        <h3 class="mb-0 ft-medium">$1023</h3>
-                    </div>
-
-                    <div class="cart_action px-3 py-3">
-                        <div class="form-group">
-                            <button type="button" class="btn d-block full-width btn-dark-light">View Cart</button>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
