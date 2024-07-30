@@ -17,6 +17,7 @@ namespace SmartTech.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public product()
         {
+            this.carts = new HashSet<cart>();
             this.order_products = new HashSet<order_products>();
             this.product_photos = new HashSet<product_photos>();
         }
@@ -30,6 +31,8 @@ namespace SmartTech.Models
         public int stock_status { get; set; }
         public int status { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cart> carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_products> order_products { get; set; }
         public virtual product_categories product_categories { get; set; }

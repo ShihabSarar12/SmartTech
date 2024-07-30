@@ -39,11 +39,11 @@
                     <div class="prt_03 mb-4">
                     </div>
 
-                    <div class="prt_05 mb-4">
+                    <form class="prt_05 mb-4" method="post" action="/Products/AddToCart">
                         <div class="form-row mb-7">
-                            <div class="col-12 col-lg-auto">
+                            <div class="col-12 col-lg-auto form-group">
                                 <!-- Quantity -->
-                                <select class="mb-2 custom-select">
+                                <select name="qnt" required id="qnt" class="mb-2 custom-select">
                                     <option value="1" selected="">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -51,13 +51,11 @@
                                     <option value="5">5</option>
                                 </select>
                             </div>
-                            <div class="col-12 col-lg">
+                            <div class="col-12 col-lg form-group">
                                 <!-- Submit -->
-                                <form method="post" action="/Products/AddToCart">
-                                    <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
-                                        <i class="lni lni-shopping-basket mr-2"></i>Add to Cart
-                                    </button>
-                                </form>
+                                <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
+                                    <i class="lni lni-shopping-basket mr-2"></i>Add to Cart
+                                </button>
                                 @if (Session["user"] == null)
                                 {
                                     <h5 class="text-danger">You need to login before you can add to cart!</h5>
@@ -70,7 +68,7 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
                     <div class="prt_06">
                         <p class="mb-0 d-flex align-items-center">

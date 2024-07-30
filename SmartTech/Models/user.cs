@@ -14,6 +14,13 @@ namespace SmartTech.Models
     
     public partial class user
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user()
+        {
+            this.carts = new HashSet<cart>();
+            this.orders = new HashSet<order>();
+        }
+    
         public long id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
@@ -21,5 +28,10 @@ namespace SmartTech.Models
         public string password { get; set; }
         public string confirm_password { get; set; }
         public string image_url { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cart> carts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order> orders { get; set; }
     }
 }

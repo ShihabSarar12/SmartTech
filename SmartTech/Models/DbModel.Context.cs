@@ -27,6 +27,7 @@ namespace SmartTech.Models
     
         public virtual DbSet<admin> admins { get; set; }
         public virtual DbSet<banner> banners { get; set; }
+        public virtual DbSet<cart> carts { get; set; }
         public virtual DbSet<order_products> order_products { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<product_categories> product_categories { get; set; }
