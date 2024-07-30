@@ -402,35 +402,46 @@
                         else
                         {
                             decimal subtotal = 0;
-                            foreach (var product in cartWithImages)
-                            {
-                                <!-- Single Item -->
-                                subtotal += (product.Price * product.Quantity);
-                                <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
-                                    <div class="cart_single d-flex align-items-center">
-                                        <div class="cart_selected_single_thumb">
-                                            <a href="#"><img src="@Url.Content(product.Image)" width="60" class="img-fluid" alt="" /></a>
+                            string OrderID = "";
+                            List<ProductToOrder> productsToOrder = new List<ProductToOrder>();
+                            <form method="post" action="@Url.Action("Checkout", "Payment")">
+                                @foreach (var product in cartWithImages)
+                                {
+                                    OrderID += product.CartId.ToString();
+                                    subtotal += (product.Price * product.Quantity);
+                                    <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
+                                        <div class="cart_single d-flex align-items-center">
+                                            <div class="cart_selected_single_thumb">
+                                                <a href="#"><img src="@Url.Content(product.Image)" width="60" class="img-fluid" alt="" /></a>
+                                            </div>
+                                            <div class="cart_single_caption pl-2">
+                                                <h4 class="product_title fs-sm ft-medium mb-0 lh-1">@product.Name</h4>
+                                                <p class="mb-2"><span class="text-dark ft-medium small">Quantity: </span><span class="text-dark small">@product.Quantity</span></p>
+                                                <h4 class="fs-md ft-medium mb-0 lh-1">$@product.Price</h4>
+                                            </div>
                                         </div>
-                                        <div class="cart_single_caption pl-2">
-                                            <h4 class="product_title fs-sm ft-medium mb-0 lh-1">@product.Name</h4>
-                                            <h4 class="fs-md ft-medium mb-0 lh-1">$@product.Price</h4>
-                                            <h4 class="fs-sm ft-medium mb-0 lh-1">Quantity: @product.Quantity</h4>
-                                        </div>
+                                        <div class="fls_last"><a href="@Url.Action("DeleteCart", "Products", new { id = product.CartId })" class="close_slide gray"><i class="ti-close"></i></a></div>
                                     </div>
-                                    <div class="fls_last"><a href="@Url.Action("DeleteCart", "Products", new { id = product.CartId })" class="close_slide gray"><i class="ti-close"></i></a></div>
-                                </div>
-                            }
-                            @*Fix subtotal section*@
-                            <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
-                                <h6 class="mb-0">Subtotal</h6>
-                                <h3 class="mb-0 ft-medium">$@subtotal</h3>
-                            </div>
+                                    ProductToOrder productToOrder = new ProductToOrder(product.ProductId, product.Price, product.Quantity);
+                                    productsToOrder.Add(productToOrder);
+                                }
 
-                            <div class="cart_action px-3 py-3">
-                                <div class="form-group">
-                                    <button type="button" class="btn d-block full-width btn-dark-light">Check Out</button>
+                                <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
+                                    <h6 class="mb-0">Subtotal</h6>
+                                    <h3 class="mb-0 ft-medium">$@subtotal</h3>
+                                    <input type="hidden" name="TotalPrice" value="@subtotal" />
+                                    <input type="hidden" name="OrderID" value="@OrderID" />
+                                    <input type="hidden" name="ProductToOrders" value="@productsToOrder" />
                                 </div>
-                            </div>
+                                <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
+                                    <input type="text" class="form-control" name="Address" placeholder="Enter your Address">
+                                </div>
+                                <div class="cart_action px-3 py-3">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn d-block full-width btn-dark-light">Check Out</button>
+                                    </div>
+                                </div>
+                            </form>
                         }
                     </div>
                     

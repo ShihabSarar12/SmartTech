@@ -15,12 +15,11 @@ namespace SmartTech.Models
     public partial class order_products
     {
         public long id { get; set; }
-        public long order_id { get; set; }
         public long product_id { get; set; }
         public decimal price { get; set; }
         public long qnt { get; set; }
+        public string order_id { get; set; }
     
-        public virtual order order { get; set; }
         public virtual product product { get; set; }
     }
 }

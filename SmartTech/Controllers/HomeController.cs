@@ -33,7 +33,6 @@ namespace SmartTech.Controllers
                                 Price = product.price,
                                 Image = photo != null ? photo.image : null
                             };
-
                 var cartWithImages = query.ToList();
                 Session["cart_with_images"] = cartWithImages;
             }
