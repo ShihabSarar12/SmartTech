@@ -14,21 +14,14 @@ namespace SmartTech.Models
     
     public partial class order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public order()
-        {
-            this.order_products = new HashSet<order_products>();
-        }
-    
         public long id { get; set; }
         public string address { get; set; }
         public long shipping_id { get; set; }
         public decimal price { get; set; }
         public string status { get; set; }
         public long user_id { get; set; }
+        public string order_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order_products> order_products { get; set; }
         public virtual shipping shipping { get; set; }
         public virtual user user { get; set; }
     }

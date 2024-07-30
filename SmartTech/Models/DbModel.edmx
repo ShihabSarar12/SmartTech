@@ -40,10 +40,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="order_id" Type="bigint" Nullable="false" />
           <Property Name="product_id" Type="bigint" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="qnt" Type="bigint" Nullable="false" />
+          <Property Name="order_id" Type="varchar" MaxLength="65" Nullable="false" />
         </EntityType>
         <EntityType Name="orders">
           <Key>
@@ -55,6 +55,7 @@
           <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="order_id" Type="varchar" MaxLength="65" Nullable="false" />
         </EntityType>
         <EntityType Name="product_categories">
           <Key>
@@ -141,18 +142,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_order_id">
-          <End Role="orders" Type="Self.orders" Multiplicity="1" />
-          <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="orders">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="order_products">
-              <PropertyRef Name="order_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_product_id">
           <End Role="products" Type="Self.products" Multiplicity="1" />
           <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
@@ -224,10 +213,6 @@
             <End Role="users" EntitySet="users" />
             <End Role="cart" EntitySet="cart" />
           </AssociationSet>
-          <AssociationSet Name="FK_order_id" Association="Self.FK_order_id">
-            <End Role="orders" EntitySet="orders" />
-            <End Role="order_products" EntitySet="order_products" />
-          </AssociationSet>
           <AssociationSet Name="FK_product_id" Association="Self.FK_product_id">
             <End Role="products" EntitySet="products" />
             <End Role="order_products" EntitySet="order_products" />
@@ -287,11 +272,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="order_id" Type="Int64" Nullable="false" />
           <Property Name="product_id" Type="Int64" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="qnt" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="order" Relationship="Self.FK_order_id" FromRole="order_products" ToRole="orders" />
+          <Property Name="order_id" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="product" Relationship="Self.FK_product_id" FromRole="order_products" ToRole="products" />
         </EntityType>
         <EntityType Name="order">
@@ -304,7 +288,7 @@
           <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="user_id" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="order_products" Relationship="Self.FK_order_id" FromRole="orders" ToRole="order_products" />
+          <Property Name="order_id" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="shipping" Relationship="Self.FK_shipping_id" FromRole="orders" ToRole="shippings" />
           <NavigationProperty Name="user" Relationship="Self.FK_user_id" FromRole="orders" ToRole="users" />
         </EntityType>
@@ -390,18 +374,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_order_id">
-          <End Role="orders" Type="Self.order" Multiplicity="1" />
-          <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="orders">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="order_products">
-              <PropertyRef Name="order_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_product_id">
           <End Role="products" Type="Self.product" Multiplicity="1" />
           <End Role="order_products" Type="Self.order_products" Multiplicity="*" />
@@ -481,10 +453,6 @@
             <End Role="users" EntitySet="users" />
             <End Role="cart" EntitySet="carts" />
           </AssociationSet>
-          <AssociationSet Name="FK_order_id" Association="Self.FK_order_id">
-            <End Role="orders" EntitySet="orders" />
-            <End Role="order_products" EntitySet="order_products" />
-          </AssociationSet>
           <AssociationSet Name="FK_product_id" Association="Self.FK_product_id">
             <End Role="products" EntitySet="products" />
             <End Role="order_products" EntitySet="order_products" />
@@ -549,10 +517,10 @@
             <EntityTypeMapping TypeName="SmartTechModel.order_products">
               <MappingFragment StoreEntitySet="order_products">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="qnt" ColumnName="qnt" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -565,6 +533,7 @@
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

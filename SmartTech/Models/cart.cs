@@ -14,8 +14,7 @@ namespace SmartTech.Models
     
     public partial class cart
     {
-        public cart() { }
-        public cart(long product_id, long user_id, long qnt, decimal price) 
+        public cart(long product_id, long user_id, long qnt, decimal price)
         {
             this.product_id = product_id;
             this.user_id = user_id;
