@@ -14,6 +14,14 @@ namespace SmartTech.Models
     
     public partial class order_products
     {
+        public order_products(long product_id, decimal price, long qnt, string order_id)
+        {
+            this.product_id = product_id;
+            this.price = price;
+            this.qnt = qnt;
+            this.order_id = order_id;
+        }
+
         public long id { get; set; }
         public long product_id { get; set; }
         public decimal price { get; set; }

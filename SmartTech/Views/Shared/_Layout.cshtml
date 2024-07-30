@@ -403,7 +403,6 @@
                         {
                             decimal subtotal = 0;
                             string OrderID = "";
-                            List<ProductToOrder> productsToOrder = new List<ProductToOrder>();
                             <form method="post" action="@Url.Action("Checkout", "Payment")">
                                 @foreach (var product in cartWithImages)
                                 {
@@ -422,8 +421,6 @@
                                         </div>
                                         <div class="fls_last"><a href="@Url.Action("DeleteCart", "Products", new { id = product.CartId })" class="close_slide gray"><i class="ti-close"></i></a></div>
                                     </div>
-                                    ProductToOrder productToOrder = new ProductToOrder(product.ProductId, product.Price, product.Quantity);
-                                    productsToOrder.Add(productToOrder);
                                 }
 
                                 <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
@@ -431,10 +428,9 @@
                                     <h3 class="mb-0 ft-medium">$@subtotal</h3>
                                     <input type="hidden" name="TotalPrice" value="@subtotal" />
                                     <input type="hidden" name="OrderID" value="@OrderID" />
-                                    <input type="hidden" name="ProductToOrders" value="@productsToOrder" />
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
-                                    <input type="text" class="form-control" name="Address" placeholder="Enter your Address">
+                                    <input type="text" class="form-control" name="Address" required placeholder="Enter your Address">
                                 </div>
                                 <div class="cart_action px-3 py-3">
                                     <div class="form-group">

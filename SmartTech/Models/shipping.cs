@@ -19,7 +19,12 @@ namespace SmartTech.Models
         {
             this.orders = new HashSet<order>();
         }
-    
+        public shipping(string name, decimal price)
+        {
+            this.name = name;
+            this.price = price;
+        }
+
         public long id { get; set; }
         public string name { get; set; }
         public decimal price { get; set; }

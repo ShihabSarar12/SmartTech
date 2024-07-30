@@ -10,6 +10,5 @@ namespace SmartTech.Models
         public decimal TotalPrice { get; set; }
         public string OrderID { get; set; }
         public string Address { get; set; }
-        public List<ProductToOrder> ProductToOrders { get; set; }
     }
 }
