@@ -146,6 +146,7 @@
     <Compile Include="Models\cart.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartWithImages.cs" />
     <Compile Include="Models\DbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -6342,7 +6343,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Home\Signin_Register.cshtml" />
     <Content Include="Views\Profile\index.cshtml" />
     <Content Include="Views\Profile\Wishlist.cshtml" />

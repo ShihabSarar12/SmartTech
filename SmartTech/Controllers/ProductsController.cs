@@ -50,7 +50,6 @@ namespace SmartTech.Controllers
                 })
                 .FirstOrDefault();
             
-            System.Diagnostics.Debug.WriteLine(product);
             if (product == null)
             {
                 return HttpNotFound();

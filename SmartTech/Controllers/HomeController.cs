@@ -1,4 +1,5 @@
 ﻿using SmartTech.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -7,9 +8,35 @@ namespace SmartTech.Controllers
     public class HomeController : Controller
     {
         private readonly SmartTechEntities db = new SmartTechEntities();
+        
         public ActionResult Index()
         {
-            ViewBag.User = Session["user"];
+            var user = Session["user"] as user;
+            if (user != null)
+            {
+                var query = from cart in db.carts
+                            where cart.user_id == user.id
+                            join product in db.products
+                            on cart.product_id equals product.id
+                            join photo in db.product_photos
+                            on product.id equals photo.product_id into photos
+                            from photo in photos
+                            .GroupBy(p => p.product_id)
+                            .Select(g => g.FirstOrDefault())
+                            .DefaultIfEmpty()
+                            select new CartWithImages
+                            {
+                                CartId = cart.id,
+                                Quantity = cart.qnt,
+                                ProductId = product.id,
+                                Name = product.name,
+                                Price = product.price,
+                                Image = photo != null ? photo.image : null
+                            };
+
+                var cartWithImages = query.ToList();
+                ViewBag.Cart = cartWithImages;
+            }
             return View();
         }
 
@@ -18,10 +45,6 @@ namespace SmartTech.Controllers
             return View();
         }
 
-        public ActionResult Shop()
-        {
-            return View();
-        }
 
         public ActionResult Contact()
         {
