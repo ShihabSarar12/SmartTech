@@ -62,15 +62,15 @@
                                     <h4><a href="#pricing" data-toggle="collapse" aria-expanded="false" role="button">Pricing</a></h4>
                                 </div>
                                 <div class="widget-boxed-body collapse show" id="pricing" data-parent="#pricing">
-                                    <div class="row">
+                                    <form class="row" method="get" action="/Products/Index">
                                         <div class="col-lg-6 pr-1">
                                             <div class="form-group pl-3">
-                                                <input type="number" class="form-control" placeholder="Min">
+                                                <input type="number" class="form-control" name="minPrice" placeholder="Min">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 pl-1">
                                             <div class="form-group pr-3">
-                                                <input type="number" class="form-control" placeholder="Max">
+                                                <input type="number" class="form-control" name="maxPrice" placeholder="Max">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -78,7 +78,7 @@
                                                 <button type="submit" class="btn form-control">Submit</button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
 
@@ -269,16 +269,16 @@
                             <div class="border mb-3 mfliud">
                                 <div class="row align-items-center py-2 m-0">
                                     <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                                        <h6 class="mb-0">Searched Products Found</h6>
+                                        <h6 class="mb-0">Products Found</h6>
                                     </div>
 
                                     <div class="col-xl-9 col-lg-8 col-md-7 col-sm-12">
                                         <div class="filter_wraps d-flex align-items-center justify-content-end m-start">
                                             <div class="single_fitres mr-2 br-right">
-                                                <select class="custom-select simple">
+                                                <select class="custom-select simple" id="sortDropdown" onchange="onSortChange()">
                                                     <option value="1" selected="">Default Sorting</option>
                                                     <option value="2">Sort by price: Low price</option>
-                                                    <option value="3">Sort by price: Hight price</option>
+                                                    <option value="3">Sort by price: High price</option>
                                                 </select>
                                             </div>
 
@@ -327,3 +327,14 @@
     </section>
     <!-- ======================= All Product List ======================== -->
 </div>
+<script>
+    const onSortChange = () => {
+        const sortOption = document.getElementById('sortDropdown').value;
+        const searchQuery = '<%= Session["search_query"] %>';
+        let url = '/Products/Index?sortOption=' + sortOption;
+        if (searchQuery) {
+            url += '&searchQuery=' + encodeURIComponent(searchQuery);
+        }
+        window.location.href = url;
+    }
+</script>

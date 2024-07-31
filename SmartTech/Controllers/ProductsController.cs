@@ -24,6 +24,13 @@ namespace SmartTech.Controllers
         }
 
         [HttpPost]
+        public ActionResult Search(string SearchQuery)
+        {
+            Session["search_query"] = SearchQuery;
+            return RedirectToAction("Index", "Products");
+        }
+
+        [HttpPost]
         public ActionResult AddToCart(long qnt)
         {
             var product = Session["product"] as product;
@@ -33,22 +40,20 @@ namespace SmartTech.Controllers
             db.SaveChanges();
             return RedirectToAction("Details", new { id = Session["product_id"] });
         }
-        // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string sortOption, decimal? minPrice, decimal? maxPrice)
         {
+            var SearchQuery = Session["search_query"] as string;
             var user = Session["user"] as user;
             if (user != null)
             {
                 var query = from cart in db.carts
                             where cart.user_id == user.id
-                            join product in db.products
-                            on cart.product_id equals product.id
-                            join photo in db.product_photos
-                            on product.id equals photo.product_id into photos
+                            join product in db.products on cart.product_id equals product.id
+                            join photo in db.product_photos on product.id equals photo.product_id into photos
                             from photo in photos
-                            .GroupBy(p => p.product_id)
-                            .Select(g => g.FirstOrDefault())
-                            .DefaultIfEmpty()
+                                .GroupBy(p => p.product_id)
+                                .Select(g => g.FirstOrDefault())
+                                .DefaultIfEmpty()
                             select new CartWithImages
                             {
                                 CartId = cart.id,
@@ -67,9 +72,38 @@ namespace SmartTech.Controllers
                 Session["user"] = null;
                 Session["cart_with_images"] = null;
             }
-            var products = db.products.Include(p => p.product_photos).ToList();
+            IQueryable<product> productsQuery = db.products.Include(p => p.product_photos);
+            if (!string.IsNullOrEmpty(SearchQuery))
+            {
+                string lowerCaseQuery = SearchQuery.ToLower();
+                productsQuery = productsQuery.Where(p => p.name.ToLower().Contains(lowerCaseQuery));
+            }
+            if (minPrice.HasValue)
+            {
+                productsQuery = productsQuery.Where(p => p.price >= minPrice.Value);
+            }
+            if (maxPrice.HasValue)
+            {
+                productsQuery = productsQuery.Where(p => p.price <= maxPrice.Value);
+            }
+            switch (sortOption)
+            {
+                case "2":
+                    productsQuery = productsQuery.OrderBy(p => p.price);
+                    break;
+                case "3":
+                    productsQuery = productsQuery.OrderByDescending(p => p.price);
+                    break;
+                default:
+                    productsQuery = productsQuery.OrderBy(p => p.name); // Assuming default is sort by name
+                    break;
+            }
+            List<product> products = productsQuery.ToList();
+            Session["search_query"] = null;
             return View(products);
         }
+
+
 
         // GET: Products/Details/5
         public ActionResult Details(long? id)
