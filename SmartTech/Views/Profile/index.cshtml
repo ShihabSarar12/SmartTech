@@ -3,6 +3,7 @@
     ViewBag.Title = "Profile";
     string name = ViewBag?.User?.name;
     string email = ViewBag?.User?.email;
+    string number = ViewBag?.User?.number;
     string image_url = ViewBag?.User?.image_url;
 }
 <!-- ======================= Top Breadcrubms ======================== -->
@@ -87,7 +88,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">Number</label>
-                                <input type="text" name="number" class="form-control" placeholder="Number" />
+                                <input type="text" name="number" class="form-control" placeholder="@number" />
                             </div>
                         </div>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">

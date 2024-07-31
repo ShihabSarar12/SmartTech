@@ -99,6 +99,8 @@ namespace SmartTech.Controllers
                                      };
 
             var groupedOrders = ordersWithProducts.ToList();
+            if (groupedOrders.Count == 0)
+                ViewBag.EmptyMsg = "You haven't ordered yet!";
 
 
             return View(groupedOrders);
@@ -129,22 +131,22 @@ namespace SmartTech.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
         [HttpPost]
         public ActionResult Edit(user user)
         {
-            string relativePath = "";
-            if(user == null)
+            var prevUser = Session["user"] as user;
+            if (prevUser == null)
+                return RedirectToAction("Login", "Home");
+            if (user == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            string relativePath = "";
             if (user.uploaded_file != null && user.uploaded_file.ContentLength > 0)
             {
                 var targetFolder = Server.MapPath("~/Content/frontend/img/user");
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
+
                 var fileName = Path.GetFileNameWithoutExtension(user.uploaded_file.FileName);
                 var fileExtension = Path.GetExtension(user.uploaded_file.FileName);
                 var uniqueFileName = $"{fileName}_{DateTime.Now:yyyyMMddHHmmssfff}{fileExtension}";
@@ -158,26 +160,36 @@ namespace SmartTech.Controllers
             }
             else
                 ViewBag.Message = "No file selected.";
-            var prevUser = Session["user"] as user;
+            
             var checkUser = db.users.Find(prevUser.id);
-            if(!user.confirm_password.Equals(checkUser.password) && !string.IsNullOrEmpty(user.confirm_password))
+            if (checkUser == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            if (!string.IsNullOrEmpty(user?.confirm_password))
             {
-                Session["match"] = "Current Password does not match!";
-                return RedirectToAction("Index", "Profile");
+                if (!user.confirm_password.Equals(checkUser.password))
+                {
+                    Session["match"] = "Current Password does not match!";
+                    return RedirectToAction("Index", "Profile");
+                }
+                else
+                {
+                    Session["match"] = null;
+                }
             }
-            else if(user.confirm_password.Equals(checkUser.password))
-            {
-                Session["match"] = null;
-                checkUser.email = string.IsNullOrEmpty(user.email) ? checkUser.email : user.email;
-                checkUser.password = user.password;
-                checkUser.number = string.IsNullOrEmpty(user.number) ? checkUser.number : user.number;
-                checkUser.name = string.IsNullOrEmpty(user.name) ? checkUser.name : user.name;
-                checkUser.image_url = string.IsNullOrWhiteSpace(relativePath) ? checkUser.image_url : relativePath;
-                db.SaveChanges();
-            }
+
+            checkUser.email = string.IsNullOrEmpty(user.email) ? checkUser.email : user.email;
+            checkUser.password = string.IsNullOrEmpty(user?.password) ? checkUser.password : user.password;
+            checkUser.number = string.IsNullOrEmpty(user.number) ? checkUser.number : user.number;
+            checkUser.name = string.IsNullOrEmpty(user.name) ? checkUser.name : user.name;
+            checkUser.image_url = string.IsNullOrWhiteSpace(relativePath) ? checkUser.image_url : relativePath;
+            db.SaveChanges();
+
             Session["user"] = null;
             return RedirectToAction("Index", "Home");
         }
+
+
         public ActionResult Logout()
         {
             Session["user"] = null;

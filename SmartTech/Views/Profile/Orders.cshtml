@@ -33,7 +33,7 @@
                         @if (image_url != null)
                         {
                             <div class="dash_auth_thumb circle p-1 border d-inline-flex mx-auto mb-2">
-                                <img src="@image_url" class="img-fluid circle" width="100" alt="" />
+                                <img src="@Url.Content(image_url)" class="img-fluid circle" width="100" alt="" />
                             </div>
                         }
                         <div class="dash_caption">
@@ -54,8 +54,20 @@
 
                 </div>
             </div>
-
             <div class="col-12 col-md-12 col-lg-8 col-xl-8 text-center">
+                @if (ViewBag.EmptyMsg != null)
+                {
+                    <div class="ord_list_wrap border mb-4">
+                        <div class="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">
+                            <div class="olh_flex">
+                                <p class="m-0 p-0"><span class="text-muted">Orders</span></p>
+                                <h6 class="mb-0 ft-medium">Empty</h6>
+                            </div>
+                        </div>
+                        <h2 class="text-danger mt-3">@ViewBag.EmptyMsg</h2>
+                        <a href="@Url.Action("Index", "Products")" class="btn d-block full-width btn-dark-light">Browse Shop <i class="lni lni-shopping-basket mr-2"></i></a>
+                    </div>
+                }
                 @foreach (var item in Model)
                 {
                     <!-- Single Order List -->

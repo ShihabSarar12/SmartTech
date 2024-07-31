@@ -1,4 +1,5 @@
 ﻿using SmartTech.Models;
+using SmartTech.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -70,6 +71,7 @@ namespace SmartTech.Controllers
                 ViewBag.Error = "Password doesn\'t match!!";
                 return View();
             }
+            user.password = PasswordHasher.HashPassword(user.password);
             db.users.Add(user);
             db.SaveChanges();
             ViewBag.Error = "Signed up successfully";
@@ -85,16 +87,20 @@ namespace SmartTech.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            var IsValidUser = db.users.Where(usr => usr.email.Equals(email)
-                    && usr.password.Equals(password)).FirstOrDefault();
-            if (IsValidUser == null)
+            var user = db.users.FirstOrDefault(u => u.email.Equals(email));
+
+            bool isValidUser = false;
+            if (user != null)
+                isValidUser = PasswordHasher.ValidatePassword(password, user.password);
+            if (!isValidUser)
             {
-                ViewBag.IsValid = "Credentials doesn\'t match!!";
+                ViewBag.IsValid = "Credentials don't match!";
                 return View();
             }
-            Session["user"] = IsValidUser;
+            Session["user"] = user;
             return RedirectToAction("Index");
         }
+
 
     }
 }
