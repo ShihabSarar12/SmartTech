@@ -167,6 +167,8 @@
     <Compile Include="Models\order.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderedItems.cs" />
+    <Compile Include="Models\OrderedProductWithImages.cs" />
     <Compile Include="Models\order_products.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -6348,7 +6350,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Signin_Register.cshtml" />
-    <Content Include="Views\Profile\index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Wishlist.cshtml" />
     <Content Include="Views\Profile\Orders.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />

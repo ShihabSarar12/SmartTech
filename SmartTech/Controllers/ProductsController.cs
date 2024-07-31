@@ -95,7 +95,7 @@ namespace SmartTech.Controllers
                     productsQuery = productsQuery.OrderByDescending(p => p.price);
                     break;
                 default:
-                    productsQuery = productsQuery.OrderBy(p => p.name); // Assuming default is sort by name
+                    productsQuery = productsQuery.OrderBy(p => p.name);
                     break;
             }
             List<product> products = productsQuery.ToList();
