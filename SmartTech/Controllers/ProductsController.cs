@@ -24,6 +24,13 @@ namespace SmartTech.Controllers
         }
 
         [HttpPost]
+        public ActionResult Search(string SearchQuery)
+        {
+            Session["search_query"] = SearchQuery;
+            return RedirectToAction("Index", "Products");
+        }
+
+        [HttpPost]
         public ActionResult AddToCart(long qnt)
         {
             var product = Session["product"] as product;
@@ -36,6 +43,7 @@ namespace SmartTech.Controllers
         // GET: Products
         public ActionResult Index()
         {
+            var SearchQuery = Session["search_query"] as string;
             var user = Session["user"] as user;
             if (user != null)
             {
@@ -67,7 +75,16 @@ namespace SmartTech.Controllers
                 Session["user"] = null;
                 Session["cart_with_images"] = null;
             }
-            var products = db.products.Include(p => p.product_photos).ToList();
+            List<product> products;
+            products = string.IsNullOrEmpty(SearchQuery) ?
+                    db.products
+                        .Include(p => p.product_photos)
+                        .ToList() : 
+                    db.products
+                        .Include(p => p.product_photos)
+                        .Where(p => p.name.ToLower().Contains(SearchQuery.ToLower()))
+                        .ToList();
+            Session["search_query"] = null;
             return View(products);
         }
 

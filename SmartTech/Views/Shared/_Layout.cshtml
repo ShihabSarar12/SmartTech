@@ -94,11 +94,11 @@
                                     </a>
                                 </div>
                                 <div class="headd-sty-02 ml-3">
-                                    <form class="bg-white rounded-md border-bold">
+                                    <form class="bg-white rounded-md border-bold" method="post" action="@Url.Action("Search", "Products")">
                                         <div class="input-group">
-                                            <input type="text" class="form-control custom-height b-0" placeholder="Search for products..." />
+                                            <input type="text" class="form-control custom-height b-0" name="SearchQuery" placeholder="Search for products..." />
                                             <div class="input-group-append">
-                                                <div class="input-group-text"><button class="btn bg-white text-danger custom-height rounded px-3" type="button"><i class="fas fa-search"></i></button></div>
+                                                <div class="input-group-text"><button class="btn bg-white text-danger custom-height rounded px-3" type="submit"><i class="fas fa-search"></i></button></div>
                                             </div>
                                         </div>
                                     </form>
@@ -402,11 +402,9 @@
                         else
                         {
                             decimal subtotal = 0;
-                            string OrderID = "";
                             <form method="post" action="@Url.Action("Checkout", "Payment")">
                                 @foreach (var product in cartWithImages)
                                 {
-                                    OrderID += product.CartId.ToString();
                                     subtotal += (product.Price * product.Quantity);
                                     <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
                                         <div class="cart_single d-flex align-items-center">
@@ -427,7 +425,6 @@
                                     <h6 class="mb-0">Subtotal</h6>
                                     <h3 class="mb-0 ft-medium">$@subtotal</h3>
                                     <input type="hidden" name="TotalPrice" value="@subtotal" />
-                                    <input type="hidden" name="OrderID" value="@OrderID" />
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
                                     <input type="text" class="form-control" name="Address" required placeholder="Enter your Address">
@@ -437,6 +434,13 @@
                                         <button type="submit" class="btn d-block full-width btn-dark-light">Check Out</button>
                                     </div>
                                 </div>
+                                @if (Session["cart_empty"] != null)
+                                {
+                                    string msg = Session["cart_empty"] as string;
+                                    <div class="cart_action px-3 py-3">
+                                        <h4 class="text-danger">@msg</h4>
+                                    </div>
+                                }
                             </form>
                         }
                     </div>

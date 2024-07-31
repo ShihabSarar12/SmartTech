@@ -11,9 +11,11 @@ namespace SmartTech.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Security.Policy;
+
     public partial class order
     {
+        public order() { }
         public order(string address, long shipping_id, decimal price, string status, long user_id, string order_id)
         {
             this.address = address;
