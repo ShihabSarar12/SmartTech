@@ -11,7 +11,8 @@ namespace SmartTech.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,7 +29,8 @@ namespace SmartTech.Models
         public string password { get; set; }
         public string confirm_password { get; set; }
         public string image_url { get; set; }
-    
+        public HttpPostedFileBase uploaded_file { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart> carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

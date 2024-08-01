@@ -167,6 +167,8 @@
     <Compile Include="Models\order.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderedItems.cs" />
+    <Compile Include="Models\OrderedProductWithImages.cs" />
     <Compile Include="Models\order_products.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -184,11 +186,13 @@
     <Compile Include="Models\shipping.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TopCategories.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\KeyGenerator.cs" />
+    <Compile Include="Utilities\PasswordHasher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\backend\ajax\featured-menu-list.html" />
@@ -6348,8 +6352,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Signin_Register.cshtml" />
-    <Content Include="Views\Profile\index.cshtml" />
-    <Content Include="Views\Profile\Wishlist.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Orders.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\AdminView.cshtml" />
@@ -6358,10 +6361,7 @@
     <Content Include="Views\Admin\Banner.cshtml" />
     <Content Include="Views\Admin\Shipping.cshtml" />
     <Content Include="Views\Admin\AddBanner.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Admin\AddCategories.cshtml" />
     <Content Include="Views\Admin\AddProducts.cshtml" />
@@ -6370,7 +6370,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\uploads\frontend\banners\" />
-    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

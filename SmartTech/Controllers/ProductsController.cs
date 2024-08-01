@@ -40,7 +40,7 @@ namespace SmartTech.Controllers
             db.SaveChanges();
             return RedirectToAction("Details", new { id = Session["product_id"] });
         }
-        public ActionResult Index(string sortOption, decimal? minPrice, decimal? maxPrice)
+        public ActionResult Index(string sortOption, decimal? minPrice, decimal? maxPrice, string category)
         {
             var SearchQuery = Session["search_query"] as string;
             var user = Session["user"] as user;
@@ -72,20 +72,30 @@ namespace SmartTech.Controllers
                 Session["user"] = null;
                 Session["cart_with_images"] = null;
             }
+
             IQueryable<product> productsQuery = db.products.Include(p => p.product_photos);
+
             if (!string.IsNullOrEmpty(SearchQuery))
             {
                 string lowerCaseQuery = SearchQuery.ToLower();
                 productsQuery = productsQuery.Where(p => p.name.ToLower().Contains(lowerCaseQuery));
             }
+
             if (minPrice.HasValue)
             {
                 productsQuery = productsQuery.Where(p => p.price >= minPrice.Value);
             }
+
             if (maxPrice.HasValue)
             {
                 productsQuery = productsQuery.Where(p => p.price <= maxPrice.Value);
             }
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                productsQuery = productsQuery.Where(p => p.product_categories.category_name == category);
+            }
+
             switch (sortOption)
             {
                 case "2":
@@ -95,17 +105,17 @@ namespace SmartTech.Controllers
                     productsQuery = productsQuery.OrderByDescending(p => p.price);
                     break;
                 default:
-                    productsQuery = productsQuery.OrderBy(p => p.name); // Assuming default is sort by name
+                    productsQuery = productsQuery.OrderBy(p => p.name);
                     break;
             }
+
             List<product> products = productsQuery.ToList();
             Session["search_query"] = null;
+            List<product_categories> categories = db.product_categories.ToList();
+            Session["categories"] = categories;
             return View(products);
         }
 
-
-
-        // GET: Products/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -128,95 +138,6 @@ namespace SmartTech.Controllers
                 return HttpNotFound();
             }
             return View(product);
-        }
-
-        // GET: Products/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,category_id,name,slugs,short_description,description,discount,price,link,stock_status,featured,popular,status,seo_title,seo_description,seo_tags,created_at,updated_at")] product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(product);
-        }
-
-        // GET: Products/Edit/5
-        public ActionResult Edit(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            product product = db.products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,category_id,name,slugs,short_description,description,discount,price,link,stock_status,featured,popular,status,seo_title,seo_description,seo_tags,created_at,updated_at")] product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(product);
-        }
-
-        // GET: Products/Delete/5
-        public ActionResult Delete(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            product product = db.products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
-        {
-            product product = db.products.Find(id);
-            db.products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

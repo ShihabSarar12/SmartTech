@@ -26,7 +26,7 @@ namespace SmartTech.Controllers
             while (true)
             {
                 orderID = KeyGenerator.GetUniqueKey(10);
-                orderID += ("" + DateTime.Now.ToString("HHmmss"));
+                orderID += (DateTime.Now.ToString(" yyyy-MM-dd") + " | " + DateTime.Now.ToString("HH:mm:ss tt"));
                 var query = from order in db.orders
                             where order.order_id == orderID
                             select order;

@@ -1,4 +1,5 @@
 ﻿using SmartTech.Models;
+using SmartTech.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -41,6 +42,20 @@ namespace SmartTech.Controllers
                 Session["user"] = null;
                 Session["cart_with_images"] = null;
             }
+            var topCategoriesBySales = db.product_categories
+                .Select(category => new TopCategories
+                {
+                    Category = category,
+                    TotalSales = category.products
+                    .SelectMany(p => p.order_products)
+                    .Select(op => (decimal?)op.qnt * (decimal?)op.price)
+                    .DefaultIfEmpty(0)
+                    .Sum()
+                })
+                .OrderByDescending(x => x.TotalSales)
+                .Take(5)
+                .ToList();
+            Session["top_categories"] = topCategoriesBySales;
             return View();
         }
 
@@ -70,6 +85,7 @@ namespace SmartTech.Controllers
                 ViewBag.Error = "Password doesn\'t match!!";
                 return View();
             }
+            user.password = PasswordHasher.HashPassword(user.password);
             db.users.Add(user);
             db.SaveChanges();
             ViewBag.Error = "Signed up successfully";
@@ -85,16 +101,20 @@ namespace SmartTech.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            var IsValidUser = db.users.Where(usr => usr.email.Equals(email)
-                    && usr.password.Equals(password)).FirstOrDefault();
-            if (IsValidUser == null)
+            var user = db.users.FirstOrDefault(u => u.email.Equals(email));
+
+            bool isValidUser = false;
+            if (user != null)
+                isValidUser = PasswordHasher.ValidatePassword(password, user.password);
+            if (!isValidUser)
             {
-                ViewBag.IsValid = "Credentials doesn\'t match!!";
+                ViewBag.IsValid = "Credentials don't match!";
                 return View();
             }
-            Session["user"] = IsValidUser;
+            Session["user"] = user;
             return RedirectToAction("Index");
         }
+
 
     }
 }
