@@ -57,7 +57,7 @@
                     <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12">
                         <!-- Choose Language -->
                         <div class="language-selector-wrapper dropdown js-dropdown float-right mr-3">
-                            <a class="popup-title" href="javascript:void(0)" data-toggle="dropdown" title="Language" aria-label="Language dropdown">
+                            <a class="popup-title" href="" data-toggle="dropdown" title="Language" aria-label="Language dropdown">
                                 <span class="iso_code medium text-muted">English</span>
                             </a>
                         </div>
@@ -65,10 +65,10 @@
                         {
                             <div>
                                 <div class="currency-selector dropdown js-dropdown float-right mr-3">
-                                    <a href="javascript:void(0);" class="text-muted medium"><i class="lni lni-user mr-1"></i>@Html.ActionLink("Register", "Signin_Register", "Home")</a>
+                                    <a href="" class="text-muted medium"><i class="lni lni-user mr-1"></i>@Html.ActionLink("Register", "Signin_Register", "Home")</a>
                                 </div>
                                 <div class="currency-selector dropdown js-dropdown float-right mr-3">
-                                    <a href="javascript:void(0);" class="text-muted medium"><i class="lni lni-user mr-1"></i>@Html.ActionLink("Login", "Login", "Home")</a>
+                                    <a href="" class="text-muted medium"><i class="lni lni-user mr-1"></i>@Html.ActionLink("Login", "Login", "Home")</a>
                                 </div>
                             </div>
                         }
@@ -113,11 +113,6 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="openWishlist()">
-                                            <i class="far fa-heart fs-lg"></i><span class="dn-counter bg-success">2</span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="#" onclick="openCart()">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <i class="fas fa-shopping-basket fs-lg"></i>
@@ -146,11 +141,6 @@
                                     <li>
                                         <a href="#" data-toggle="modal" data-target="#login">
                                             <i class="lni lni-user"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" onclick="openWishlist()">
-                                            <i class="lni lni-heart"></i><span class="dn-counter">2</span>
                                         </a>
                                     </li>
                                     <li>
@@ -474,15 +464,6 @@
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
-
-    <script>
-        function openWishlist() {
-            document.getElementById("Wishlist").style.display = "block";
-        }
-        function closeWishlist() {
-            document.getElementById("Wishlist").style.display = "none";
-        }
-    </script>
 
     <script>
         function openCart() {

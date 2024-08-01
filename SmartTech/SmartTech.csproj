@@ -186,6 +186,7 @@
     <Compile Include="Models\shipping.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TopCategories.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -6352,7 +6353,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Signin_Register.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Profile\Wishlist.cshtml" />
     <Content Include="Views\Profile\Orders.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\AdminView.cshtml" />
@@ -6361,10 +6361,7 @@
     <Content Include="Views\Admin\Banner.cshtml" />
     <Content Include="Views\Admin\Shipping.cshtml" />
     <Content Include="Views\Admin\AddBanner.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Admin\AddCategories.cshtml" />
     <Content Include="Views\Admin\AddProducts.cshtml" />

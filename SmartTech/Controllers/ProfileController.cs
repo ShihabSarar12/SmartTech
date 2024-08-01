@@ -13,7 +13,6 @@ namespace SmartTech.Controllers
     public class ProfileController : Controller
     {
         private readonly SmartTechEntities db = new SmartTechEntities();
-        // GET: Profile
         public ActionResult Index()
         {
             if (Session["user"] == null)
@@ -50,15 +49,6 @@ namespace SmartTech.Controllers
             {
                 Session["user"] = null;
                 Session["cart_with_images"] = null;
-            }
-            ViewBag.User = Session["user"];
-            return View();
-        }
-        public ActionResult Wishlist()
-        {
-            if (Session["user"] == null)
-            {
-                return RedirectToAction("Index", "Home");
             }
             ViewBag.User = Session["user"];
             return View();
@@ -104,31 +94,6 @@ namespace SmartTech.Controllers
 
 
             return View(groupedOrders);
-        }
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         [HttpPost]
@@ -188,7 +153,6 @@ namespace SmartTech.Controllers
             Session["user"] = null;
             return RedirectToAction("Index", "Home");
         }
-
 
         public ActionResult Logout()
         {

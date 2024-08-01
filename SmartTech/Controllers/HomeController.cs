@@ -42,6 +42,20 @@ namespace SmartTech.Controllers
                 Session["user"] = null;
                 Session["cart_with_images"] = null;
             }
+            var topCategoriesBySales = db.product_categories
+                .Select(category => new TopCategories
+                {
+                    Category = category,
+                    TotalSales = category.products
+                    .SelectMany(p => p.order_products)
+                    .Select(op => (decimal?)op.qnt * (decimal?)op.price)
+                    .DefaultIfEmpty(0)
+                    .Sum()
+                })
+                .OrderByDescending(x => x.TotalSales)
+                .Take(5)
+                .ToList();
+            Session["top_categories"] = topCategoriesBySales;
             return View();
         }
 
