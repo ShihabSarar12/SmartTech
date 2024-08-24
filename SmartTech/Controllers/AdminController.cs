@@ -1,4 +1,5 @@
 ﻿using SmartTech.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -65,21 +66,54 @@ namespace SmartTech.Controllers
         [HttpPost]
         public ActionResult EditBanner(banner banner, HttpPostedFileBase bannerImage)
         {
+            // Example of logging
+            System.Diagnostics.Debug.WriteLine("Category: " + banner.banner_category);
+            System.Diagnostics.Debug.WriteLine("Title: " + banner.banner_title);
+            System.Diagnostics.Debug.WriteLine("Description: " + banner.banner_description);
+
             if (ModelState.IsValid)
             {
-                if (bannerImage != null)
+                // Fetch the existing banner from the database
+                var existingBanner = db.banners.Find(banner.id);
+                if (existingBanner == null)
                 {
-                    string path = Server.MapPath("~/Content/uploads/frontend/banners/" + bannerImage.FileName);
-                    bannerImage.SaveAs(path);
-                    banner.banner_image = bannerImage.FileName;
+                    return HttpNotFound();
                 }
 
-                /*db.Entry(banner).State = EntityState.Modified;
-                db.banners.Add(banner);*/
+                // Update the banner details
+                existingBanner.banner_category = banner.banner_category;
+                existingBanner.banner_title = banner.banner_title;
+                existingBanner.banner_description = banner.banner_description;
+
+                // Handle the image upload
+                if (bannerImage != null && bannerImage.ContentLength > 0)
+                {
+                    // Delete the old image file if it exists
+                    var oldImagePath = Server.MapPath("~/Content/uploads/frontend/banners/" + existingBanner.banner_image);
+                    if (System.IO.File.Exists(oldImagePath) && !string.IsNullOrEmpty(existingBanner.banner_image))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+
+                    // Save the new image
+                    string newImageFileName = System.IO.Path.GetFileName(bannerImage.FileName);
+                    string newImagePath = Server.MapPath("~/Content/uploads/frontend/banners/" + newImageFileName);
+                    bannerImage.SaveAs(newImagePath);
+                    existingBanner.banner_image = newImageFileName;
+                }
+
+                // Mark the entity as modified and save changes
+                db.Entry(existingBanner).State = EntityState.Modified;
+                db.SaveChanges();
+
                 return RedirectToAction("Banner");
             }
+
+            // If we got this far, something failed; redisplay form
             return View(banner);
         }
+
+
 
         public ActionResult DeleteBanner(int id)
         {
@@ -95,7 +129,39 @@ namespace SmartTech.Controllers
 
         public ActionResult Shipping()
         {
+            var shippings = db.shippings.ToList();
+            return View(shippings);
+        }
+
+        [HttpGet]
+        public ActionResult AddShipping()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddShipping(shipping shipping)
+        {
+            if (ModelState.IsValid)
+            {
+                db.shippings.Add(shipping);
+                db.SaveChanges();
+                return RedirectToAction("Shipping");
+            }
+            return View();
+        }
+
+
+        public ActionResult DeleteShipping(long id)
+        {
+            var shipping = db.shippings.Find(id);
+            if (shipping == null)
+            {
+                return HttpNotFound();
+            }
+            db.shippings.Remove(shipping);
+            db.SaveChanges();
+            return RedirectToAction("Shipping");
         }
 
         public ActionResult AddCategories()
