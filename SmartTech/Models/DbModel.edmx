@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SmartTechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SmartTechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admins">
           <Key>
             <PropertyRef Name="id" />
@@ -24,6 +24,7 @@
           <Property Name="banner_title" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="banner_description" Type="varchar" MaxLength="191" Nullable="false" />
           <Property Name="banner_image" Type="varchar" MaxLength="191" />
+          <Property Name="banner_category" Type="varchar" MaxLength="191" />
         </EntityType>
         <EntityType Name="cart">
           <Key>
@@ -118,7 +119,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__cart__product_id__10216507">
+        <Association Name="FK__cart__product_id__5070F446">
           <End Role="products" Type="Self.products" Multiplicity="1" />
           <End Role="cart" Type="Self.cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +131,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__cart__user_id__11158940">
+        <Association Name="FK__cart__user_id__5165187F">
           <End Role="users" Type="Self.users" Multiplicity="1" />
           <End Role="cart" Type="Self.cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -205,11 +206,11 @@
             <End Role="product_categories" EntitySet="product_categories" />
             <End Role="products" EntitySet="products" />
           </AssociationSet>
-          <AssociationSet Name="FK__cart__product_id__10216507" Association="Self.FK__cart__product_id__10216507">
+          <AssociationSet Name="FK__cart__product_id__5070F446" Association="Self.FK__cart__product_id__5070F446">
             <End Role="products" EntitySet="products" />
             <End Role="cart" EntitySet="cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__cart__user_id__11158940" Association="Self.FK__cart__user_id__11158940">
+          <AssociationSet Name="FK__cart__user_id__5165187F" Association="Self.FK__cart__user_id__5165187F">
             <End Role="users" EntitySet="users" />
             <End Role="cart" EntitySet="cart" />
           </AssociationSet>
@@ -230,8 +231,7 @@
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SmartTechModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -254,6 +254,7 @@
           <Property Name="banner_title" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="banner_description" Type="String" MaxLength="191" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="banner_image" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="banner_category" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="cart">
           <Key>
@@ -495,6 +496,7 @@
           <EntitySetMapping Name="banners">
             <EntityTypeMapping TypeName="SmartTechModel.banner">
               <MappingFragment StoreEntitySet="banners">
+                <ScalarProperty Name="banner_category" ColumnName="banner_category" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="banner_title" ColumnName="banner_title" />
                 <ScalarProperty Name="banner_description" ColumnName="banner_description" />
