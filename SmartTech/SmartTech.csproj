@@ -2605,6 +2605,15 @@
     <Content Include="Content\backend\file\vendor\toastr\js\toastr.min.js" />
     <Content Include="Content\backend\file\vendor\waypoints\jquery.waypoints.min.js" />
     <Content Include="Content\backend\file\vendor\wnumb\wNumb.js" />
+    <Content Include="Content\backend\Plugins\font-awesome.css" />
+    <Content Include="Content\backend\fonts\fa-brands-400.svg" />
+    <Content Include="Content\backend\fonts\fa-regular-400.svg" />
+    <Content Include="Content\backend\fonts\fa-solid-900.svg" />
+    <Content Include="Content\backend\fonts\Flaticon.svg" />
+    <Content Include="Content\backend\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Content\backend\fonts\houses.svg" />
+    <Content Include="Content\backend\fonts\LineIcons.svg" />
+    <Content Include="Content\backend\fonts\themify9f24.svg" />
     <Content Include="Content\backend\icons\avasta\css\style.css" />
     <Content Include="Content\backend\icons\avasta\fonts\avasta.svg" />
     <Content Include="Content\backend\icons\feather\activity.svg" />
@@ -6243,6 +6252,48 @@
     <Content Include="Models\DbModel.edmx.diagram">
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\backend\fonts\fa-brands-400.eot" />
+    <Content Include="Content\backend\fonts\fa-brands-400.ttf" />
+    <Content Include="Content\backend\fonts\fa-brands-400.woff" />
+    <Content Include="Content\backend\fonts\fa-brands-400.woff2" />
+    <Content Include="Content\backend\fonts\fa-brands-400d41d.eot" />
+    <Content Include="Content\backend\fonts\fa-regular-400.eot" />
+    <Content Include="Content\backend\fonts\fa-regular-400.ttf" />
+    <Content Include="Content\backend\fonts\fa-regular-400.woff" />
+    <Content Include="Content\backend\fonts\fa-regular-400.woff2" />
+    <Content Include="Content\backend\fonts\fa-regular-400d41d.eot" />
+    <Content Include="Content\backend\fonts\fa-solid-900.eot" />
+    <Content Include="Content\backend\fonts\fa-solid-900.ttf" />
+    <Content Include="Content\backend\fonts\fa-solid-900.woff" />
+    <Content Include="Content\backend\fonts\fa-solid-900.woff2" />
+    <Content Include="Content\backend\fonts\fa-solid-900d41d.eot" />
+    <Content Include="Content\backend\fonts\Flaticon.eot" />
+    <Content Include="Content\backend\fonts\Flaticon.ttf" />
+    <Content Include="Content\backend\fonts\Flaticon.woff" />
+    <Content Include="Content\backend\fonts\Flaticond41d.eot" />
+    <Content Include="Content\backend\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="Content\backend\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="Content\backend\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="Content\backend\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="Content\backend\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\backend\fonts\houses.eot" />
+    <Content Include="Content\backend\fonts\houses.ttf" />
+    <Content Include="Content\backend\fonts\houses.woff" />
+    <Content Include="Content\backend\fonts\housesd41d.eot" />
+    <Content Include="Content\backend\fonts\icofont.woff" />
+    <Content Include="Content\backend\fonts\icofont.woff2" />
+    <Content Include="Content\backend\fonts\LineIcons.eot" />
+    <Content Include="Content\backend\fonts\LineIcons.ttf" />
+    <Content Include="Content\backend\fonts\LineIcons.woff" />
+    <Content Include="Content\backend\fonts\LineIcons.woff2" />
+    <Content Include="Content\backend\fonts\slick.eot" />
+    <Content Include="Content\backend\fonts\slick.ttf" />
+    <Content Include="Content\backend\fonts\slick.woff" />
+    <Content Include="Content\backend\fonts\slickd41d.eot" />
+    <Content Include="Content\backend\fonts\themify9f24.eot" />
+    <Content Include="Content\backend\fonts\themify9f24.ttf" />
+    <Content Include="Content\backend\fonts\themify9f24.woff" />
+    <Content Include="Content\backend\fonts\themifyd41d.eot" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -6363,13 +6414,14 @@
     <Content Include="Views\Admin\AddBanner.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Admin\AddCategories.cshtml" />
+    <Content Include="Views\Admin\Categories.cshtml" />
     <Content Include="Views\Admin\AddProducts.cshtml" />
     <Content Include="Views\Admin\EditBanner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\uploads\frontend\banners\" />
+    <Folder Include="Content\uploads\frontend\categoryImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
