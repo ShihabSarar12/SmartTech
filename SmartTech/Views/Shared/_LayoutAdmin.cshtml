@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Admin Dashboard</title>
     <!-- Favicon icon -->
+    <link href="~/Content/backend/Plugins/font-awesome.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="16x16" href="~/Content/backend/images/favicon.png">
     <link rel="stylesheet" href="~/Content/backend/vendor/chartist/css/chartist.min.css">
     <link href="~/Content/backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="~/Content/backend/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="~/Content/backend/css/style.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -128,8 +130,8 @@
                             <span class="nav-text">Products</span>
                         </a>
                         <ul aria-expanded="false" class="mm-collapse">
-                            <li>@Html.ActionLink("Add Categories", "AddCategories", "Admin")</li>
-                            <li><a href="#">Add Products</a></li>
+                            <li>@Html.ActionLink("Categories", "Categories", "Admin")</li>
+                            <li>@Html.ActionLink("Add Products", "AddProducts", "Admin")</li>
                             <li><a href="#">View Products</a></li>
                         </ul>
                     </li>

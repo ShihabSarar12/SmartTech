@@ -18,9 +18,11 @@
                             <ul>
                                 @foreach (var item in topCategories)
                                 {
-                                    <li class="d-flex justify-content-around align-items-center my-4">
-                                        <img width="40" height="40" src="@Url.Content(item.Category.category_icon)" alt="category icon" class="img-fluid icon-size rounded" />
-                                        @item.Category.category_name
+                                    <li>
+                                       <a href="javascript:void(0);">
+                                           <i class="fas @Url.Content(item.Category.category_icon)"></i>
+                                           @item.Category.category_name
+                                       </a>
                                     </li>
                                 }
                             </ul>
