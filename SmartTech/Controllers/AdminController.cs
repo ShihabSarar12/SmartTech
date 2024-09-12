@@ -1,5 +1,6 @@
 ﻿using SmartTech.Models;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -257,60 +258,142 @@ namespace SmartTech.Controllers
             return View(product);
         }
 
+        public ActionResult ViewProducts()
+        {
+            var products = db.products.Include("product_categories").ToList();
+
+            return View(db.products.ToList());
+        }
+
+        public ActionResult Photos(long id)
+        {
+            var productPhotos = db.product_photos.Where(p => p.product_id == id).ToList();
+            ViewBag.ProductId = id; // Pass the product ID to the view
+            return View(productPhotos);
+        }
+
+
+        [HttpPost]
+        public ActionResult AddPhoto(long productId, HttpPostedFileBase productImage)
+        {
+            if (productImage != null && productImage.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(productImage.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/uploads/frontend/productImages"), fileName);
+
+                productImage.SaveAs(path);
+
+                var productPhoto = new product_photos
+                {
+                    product_id = productId,
+                    image = fileName
+                };
+
+                db.product_photos.Add(productPhoto);
+                db.SaveChanges();
+            }
+            else
+            {
+                ModelState.AddModelError("", "Please select a valid image file.");
+            }
+
+
+            return RedirectToAction("Photos", new { id = productId });
+        }
+
+
+        [HttpGet]
+        public ActionResult DeletePhoto(long id)
+        {
+            var photo = db.product_photos.FirstOrDefault(p => p.id == id);
+
+            if (photo == null)
+            {
+                return HttpNotFound();
+            }
+
+            var filePath = Server.MapPath("~/Content/uploads/frontend/productImages/" + photo.image);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+
+            db.product_photos.Remove(photo);
+            db.SaveChanges();
+
+            return RedirectToAction("Photos", new { id = photo.product_id });
+        }
+
+
+
+
         [HttpGet]
         public ActionResult EditProduct(long id)
         {
-            var product = db.products.Find(id);
+
+            var product = db.products.FirstOrDefault(p => p.id == id);
+
             if (product == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryList = new SelectList(db.product_categories, "id", "category_name", product.category_id);
 
-            ViewBag.CategoryId = new SelectList(db.product_categories, "id", "category_name", product.category_id);
             return View(product);
         }
 
-        // POST: Admin/EditProduct/5
+
         [HttpPost]
         public ActionResult EditProduct(product product)
         {
-            if (ModelState.IsValid)
+            var products = db.products.FirstOrDefault(p => p.id == product.id);
+
+            if (products == null)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Products");
+                return HttpNotFound();
             }
 
-            ViewBag.CategoryId = new SelectList(db.product_categories, "id", "category_name", product.category_id);
-            return View(product);
+            products.name = product.name;
+            products.description = product.description;
+            products.price = product.price;
+            products.discount = product.discount;
+            products.category_id = product.category_id;
+            products.stock_status = product.stock_status;
+            products.status = product.status;
+
+            db.SaveChanges();
+
+            return RedirectToAction("ViewProducts");
+
         }
 
-        // GET: Admin/DeleteProduct/5
-        [HttpGet]
+
+
         public ActionResult DeleteProduct(long id)
         {
-            var product = db.products.Find(id);
+
+            var product = db.products.FirstOrDefault(p => p.id == id);
+
             if (product == null)
             {
                 return HttpNotFound();
             }
 
-            return View(product);
-        }
+            // Remove the product from the database
+            db.products.Remove(product);
+            db.SaveChanges();
 
-        // POST: Admin/DeleteProduct/5
-        [HttpPost, ActionName("DeleteProduct")]
-        public ActionResult ProductDeleteConfirmed(long id)
-        {
-            var product = db.products.Find(id);
-            if (product != null)
-            {
-                db.products.Remove(product);
-                db.SaveChanges();
-            }
-            return RedirectToAction("Products");
+            return RedirectToAction("ViewProducts");
+
         }
 
         //=================Products End===========================
+
+
+
+
+
+
     }
 }

@@ -1,19 +1,20 @@
 ﻿@model SmartTech.Models.product
 
 @{
-    ViewBag.Title = "Add Product";
+    ViewBag.Title = "Edit Product";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="col-xl-12 col-lg-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Add Product</h4>
+            <h4 class="card-title">Edit Product</h4>
         </div>
         <div class="card-body">
-            @using (Html.BeginForm("AddProducts", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("EditProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.id) <!-- Hidden field for the product ID -->
                 <div class="basic-form">
                     <div class="form-group row">
                         @Html.LabelFor(m => m.name, new { @class = "col-sm-3 col-form-label" })
@@ -38,7 +39,7 @@
                             @Html.ValidationMessageFor(m => m.price, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         @Html.LabelFor(m => m.stock_status, new { @class = "col-sm-3 col-form-label" })
                         <div class="col-sm-9">
@@ -80,4 +81,3 @@
         </div>
     </div>
 </div>
-
