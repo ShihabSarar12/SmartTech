@@ -3,7 +3,6 @@ using SmartTech.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SmartTech.Controllers
@@ -15,7 +14,7 @@ namespace SmartTech.Controllers
         public ActionResult Checkout(CartToOrder cartToOrder)
         {
             var cartWithImages = Session["cart_with_images"] as List<CartWithImages>;
-            if(cartWithImages.Count == 0)
+            if (cartWithImages.Count == 0)
             {
                 Session["cart_empty"] = "The Cart is Empty!";
                 return RedirectToAction("Index", "Home");
@@ -53,7 +52,7 @@ namespace SmartTech.Controllers
                 db.carts.Remove(cartProduct);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Orders", "Profile");
         }
     }
 }

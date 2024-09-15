@@ -153,7 +153,7 @@
                                             @if (item.product_photos.Any())
                                             {
                                                 var firstPhoto = item.product_photos.First();
-                                                <img class="card-img-top" src="@Url.Content(firstPhoto.image)" alt="Product Photo" />
+                                                <img class="card-img-top" src="@Url.Content($"~/Content/uploads/frontend/productImages/{firstPhoto.image}")" alt="Product Photo" />
                                             }
                                             else
                                             {

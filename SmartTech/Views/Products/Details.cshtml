@@ -8,11 +8,17 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12">
+                
                 <div class="quick_view_slide">
-                    @*Need to fix the Design*@
                     @foreach (var product_photo in Model.ProductPhotos)
                     {
-                        <div class="single_view_slide h-25"><img src="@Url.Content(product_photo)" class="img-fluid rounded" alt="" /></div>
+
+                        <div class="single_view_slide">
+
+                            <a href="@Url.Content($"~/Content/uploads/frontend/productImages/{product_photo}")" data-lightbox="roadtrip" class="d-block mb-4"><img src="@Url.Content($"~/Content/uploads/frontend/productImages/{product_photo}")" class="img-fluid rounded" alt="" /></a>
+
+                        </div>
+
                     }
                 </div>
             </div>
@@ -96,7 +102,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="sec_title position-relative text-center">
                     <h2 class="off_title">Similar Products</h2>
-                    <h3 class="ft-bold pt-3">Matching Producta</h3>
+                    <h3 class="ft-bold pt-3">Matching Products</h3>
                 </div>
             </div>
         </div>
@@ -124,125 +130,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- single Item -->
-                    <div class="single_itesm">
-                        <div class="product_grid card b-0 mb-0">
-                            <div class="badge bg-info text-white position-absolute ft-regular ab-left text-upper">New</div>
-                            <div class="card-body p-0">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/17.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                <div class="text-left">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Formal Men Lowers</a></h5>
-                                        <div class="elis_rty"><span class="text-muted ft-medium line-through mr-2">$129.00</span><span class="ft-bold theme-cl fs-md">$79.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- single Item -->
-                    <div class="single_itesm">
-                        <div class="product_grid card b-0 mb-0">
-                            <div class="card-body p-0">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/18.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                <div class="text-left">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Half Running Suit</a></h5>
-                                        <div class="elis_rty"><span class="ft-bold fs-md text-dark">$80.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- single Item -->
-                    <div class="single_itesm">
-                        <div class="product_grid card b-0 mb-0">
-                            <div class="badge bg-warning text-white position-absolute ft-regular ab-left text-upper">Hot</div>
-                            <div class="card-body p-0">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/19.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                <div class="text-left">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Half Fancy Lady Dress</a></h5>
-                                        <div class="elis_rty"><span class="text-muted ft-medium line-through mr-2">$149.00</span><span class="ft-bold theme-cl fs-md">$110.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- single Item -->
-                    <div class="single_itesm">
-                        <div class="product_grid card b-0 mb-0">
-                            <div class="card-body p-0">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/20.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                <div class="text-left">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Flix Flox Jeans</a></h5>
-                                        <div class="elis_rty"><span class="text-muted ft-medium line-through mr-2">$90.00</span><span class="ft-bold theme-cl fs-md">$49.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- single Item -->
-                    <div class="single_itesm">
-                        <div class="product_grid card b-0 mb-0">
-                            <div class="badge bg-danger text-white position-absolute ft-regular ab-left text-upper">Hot</div>
-                            <div class="card-body p-0">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/21.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                <div class="text-left">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Fancy Salwar Suits</a></h5>
-                                        <div class="elis_rty"><span class="ft-bold fs-md text-dark">$114.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- single Item -->
-                    <div class="single_itesm">
-                        <div class="product_grid card b-0 mb-0">
-                            <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
-                            <div class="card-body p-0">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img class="card-img-top" src="assets/img/product/22.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                <div class="text-left">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Collot Full Dress</a></h5>
-                                        <div class="elis_rty"><span class="ft-bold theme-cl fs-md text-dark">$120.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- single Item ends -->
                 </div>
             </div>
         </div>
