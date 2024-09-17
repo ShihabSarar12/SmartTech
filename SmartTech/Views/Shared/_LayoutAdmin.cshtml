@@ -121,7 +121,7 @@
                             <span class="nav-text">Shipping</span>
                         </a>
                         <ul aria-expanded="false" class="mm-collapse">
-                            <li>@Html.ActionLink("Add/View Shipping", "Shipping", "Admin")</li>
+                            <li>@Html.ActionLink("View Shipping", "Shipping", "Admin")</li>
                         </ul>
                     </li>
                     <li>
@@ -141,9 +141,9 @@
                             <span class="nav-text">Orders</span>
                         </a>
                         <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="#">Pending Orders</a></li>
-                            <li><a href="#">Processing Orders</a></li>
-                            <li><a href="#">Dispatched Orders</a></li>
+                            <li>@Html.ActionLink("Orders", "Orders", "Admin")</li>
+@*                            <li><a href="#">Processing Orders</a></li>
+                            <li><a href="#">Dispatched Orders</a></li>*@
                         </ul>
                     </li>
                 </ul>
