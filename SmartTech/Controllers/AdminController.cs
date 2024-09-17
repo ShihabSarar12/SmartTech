@@ -379,8 +379,6 @@ namespace SmartTech.Controllers
             {
                 return HttpNotFound();
             }
-
-            // Remove the product from the database
             db.products.Remove(product);
             db.SaveChanges();
 
@@ -391,9 +389,25 @@ namespace SmartTech.Controllers
         //=================Products End===========================
 
 
+        //=================Orders Start===========================
 
 
+        public ActionResult Orders()
+        {
 
+            var orders = db.orders.Include(o => o.shipping).ToList();
+            return View(orders);
+        }
+        public ActionResult ViewOrder(long id)
+        {
+
+            var viewOrders = db.order_products.Where(o => o.order_id.Equals(id));
+            ViewBag.viewOrderId = id;
+            return View("ViewOrder");
+        }
+
+
+        //=================Orders End===========================
 
     }
 }
