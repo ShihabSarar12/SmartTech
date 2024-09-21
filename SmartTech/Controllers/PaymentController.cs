@@ -37,8 +37,17 @@ namespace SmartTech.Controllers
             {
                 order_products order_Product = new order_products(cart.ProductId, cart.Price, cart.Quantity, orderID);
                 db.order_products.Add(order_Product);
-                db.SaveChanges();
+
+                var productToUpdate = db.products.SingleOrDefault(p => p.id == cart.ProductId);
+
+                if (productToUpdate != null)
+                {
+                    productToUpdate.stock_status = (int)(productToUpdate.stock_status - cart.Quantity);
+
+                    db.SaveChanges();
+                }
             }
+
             string details = user.name + " " + user.number + " " + cartToOrder.Address;
             shipping shipProduct = new shipping(details, cartToOrder.TotalPrice);
             db.shippings.Add(shipProduct);
