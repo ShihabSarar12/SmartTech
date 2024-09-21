@@ -142,8 +142,8 @@
                         </a>
                         <ul aria-expanded="false" class="mm-collapse">
                             <li>@Html.ActionLink("Orders", "Orders", "Admin")</li>
-@*                            <li><a href="#">Processing Orders</a></li>
-                            <li><a href="#">Dispatched Orders</a></li>*@
+                            @*                            <li><a href="#">Processing Orders</a></li>
+                                <li><a href="#">Dispatched Orders</a></li>*@
                         </ul>
                     </li>
                 </ul>
@@ -201,7 +201,8 @@
 
     <!-- Dashboard 1 -->
     <script src="~/Content/backend/js/dashboard/dashboard-1.js"></script>
-    <script>function carouselReview(){
+    <script>
+function carouselReview(){
 			/*  testimonial one function by = owl.carousel.js */
 			jQuery('.testimonial-one').owlCarousel({
 				loop:true,

@@ -50,7 +50,7 @@
                                                     </svg>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="@Url.Action("ViewOrder", "Admin", new { id = item.order_id })">View</a>
+                                                    <a class="dropdown-item" href="@Url.Action("ViewOrder", "Admin", new { id = item.order_id.Length >= 10 ? item.order_id.Substring(0, 10) : item.order_id })">View</a>
                                                 </div>
                                             </div>
                                         </td>

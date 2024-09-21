@@ -398,13 +398,33 @@ namespace SmartTech.Controllers
             var orders = db.orders.Include(o => o.shipping).ToList();
             return View(orders);
         }
-        public ActionResult ViewOrder(long id)
+        public ActionResult ViewOrder(string id)
         {
+            // Check if id is null or shorter than 10 characters
+            if (string.IsNullOrEmpty(id) || id.Length < 10)
+            {
+                // Handle invalid id case, maybe return an error view or redirect
+                return HttpNotFound("Invalid Order ID");
+            }
 
-            var viewOrders = db.order_products.Where(o => o.order_id.Equals(id));
+            // Retrieve the orders by matching the first 10 characters of order_id
+            var viewOrders = db.order_products
+                               .Where(o => o.order_id.Length >= 10 && o.order_id.Substring(0, 10).Equals(id.Substring(0, 10)))
+                               .ToList();
+
+            // If no matching orders found, handle the case
+            if (viewOrders == null || !viewOrders.Any())
+            {
+                return HttpNotFound("Order not found");
+            }
+
+            // Pass the full order_id to the ViewBag for use in the view
             ViewBag.viewOrderId = id;
-            return View("ViewOrder");
+
+            // Return the view with the found orders
+            return View("ViewOrder", viewOrders);
         }
+
 
 
         //=================Orders End===========================

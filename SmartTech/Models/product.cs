@@ -21,7 +21,8 @@ namespace SmartTech.Models
             this.order_products = new HashSet<order_products>();
             this.product_photos = new HashSet<product_photos>();
         }
-    
+
+
         public long id { get; set; }
         public long category_id { get; set; }
         public string name { get; set; }
