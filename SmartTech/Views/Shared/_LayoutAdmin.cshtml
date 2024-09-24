@@ -71,7 +71,7 @@
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
                                     <img src="~/Content/backend/images/profile/17.jpg" width="20" alt="profile" />
                                     <div class="header-info">
-                                        <span class="text-black"><strong>Peter Parkur</strong></span>
+                                        <span class="text-black"><strong>Ali Imran Mehedi</strong></span>
                                         <p class="fs-12 mb-0">Super Admin</p>
                                     </div>
                                 </a>
@@ -240,5 +240,43 @@ function carouselReview(){
 				carouselReview();
 			}, 1000);
 		});</script>
+
+    <script>
+        $(document).ready(function () {
+            $('.status-button').on('click', function (event) {
+                event.preventDefault();
+
+                var button = $(this);
+                var orderId = button.data('order-id');
+                var currentStatus = button.data('status');
+
+                // Check if the status is already 'Delivered'
+                if (currentStatus == 'delieverd') {
+                    return; // No need to change if already delivered
+                }
+
+                // Perform AJAX request to update status in the database
+                $.ajax({
+                    url: '@Url.Action("UpdateOrderStatus", "Admin")',
+                    type: 'POST',
+                    data: { orderId: orderId, newStatus: 'delieverd' },
+                    success: function (response) {
+                        if (response.success) {
+                            // Update button text and appearance
+                            button.text('delivered');
+                            button.removeClass('badge-primary').addClass('badge-success');
+                            button.data('status', 'delieverd');
+                        } else {
+                            alert('Failed to update the status'+orderId);
+                        }
+                    },
+                    error: function () {
+                        alert('Error updating the status');
+                    }
+                });
+            });
+        });
+
+    </script>
 </body>
 </html>

@@ -33,12 +33,16 @@ namespace SmartTech.Controllers
         [HttpPost]
         public ActionResult AddToCart(long qnt)
         {
-            var product = Session["product"] as product;
-            var user = Session["user"] as user;
-            cart cart = new cart(product.id, user.id, qnt, product.price);
-            db.carts.Add(cart);
-            db.SaveChanges();
-            return RedirectToAction("Details", new { id = Session["product_id"] });
+            if (Session["user"] != null)
+            {
+                var product = Session["product"] as product;
+                var user = Session["user"] as user;
+                cart cart = new cart(product.id, user.id, qnt, product.price);
+                db.carts.Add(cart);
+                db.SaveChanges();
+                return RedirectToAction("Details", new { id = Session["product_id"] });
+            }
+            return RedirectToAction("Login", "Home");
         }
         public ActionResult Index(string sortOption, decimal? minPrice, decimal? maxPrice, string category)
         {
@@ -118,13 +122,43 @@ namespace SmartTech.Controllers
 
         public ActionResult Details(long? id)
         {
+            var user = Session["user"] as user;
+            if (user != null)
+            {
+                var query = from cart in db.carts
+                            where cart.user_id == user.id
+                            join product in db.products
+                            on cart.product_id equals product.id
+                            join photo in db.product_photos
+                            on product.id equals photo.product_id into photos
+                            from photo in photos
+                            .GroupBy(p => p.product_id)
+                            .Select(g => g.FirstOrDefault())
+                            .DefaultIfEmpty()
+                            select new CartWithImages
+                            {
+                                CartId = cart.id,
+                                Quantity = cart.qnt,
+                                ProductId = product.id,
+                                Name = product.name,
+                                Price = product.price,
+                                Image = photo != null ? photo.image : null
+                            };
+                var cartWithImages = query.ToList();
+                Session["cart_with_images"] = cartWithImages;
+            }
+            else
+            {
+                Session["user"] = null;
+                Session["cart_with_images"] = null;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Session["product_id"] = id;
             Session["product"] = db.products.Find(id);
-            var product = db.products
+            var products = db.products
                 .Where(p => p.id == id)
                 .Select(p => new ProductWithImages
                 {
@@ -133,11 +167,11 @@ namespace SmartTech.Controllers
                 })
                 .FirstOrDefault();
             
-            if (product == null)
+            if (products == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(products);
         }
     }
 }

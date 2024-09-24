@@ -32,11 +32,20 @@
                                 {
                                     <tr>
                                         <td><strong>@counter</strong></td>
-                                        <td>@item.user.name</td> 
-                                        <td>@item.order_id</td>  
-                                        <td>@item.shipping.name</td> 
-                                        <td>BDT @item.price</td> 
-                                        <td>@item.status</td>
+                                        <td>@item.user.name</td>
+                                        <td>@item.order_id</td>
+                                        <td>@item.shipping.name</td>
+                                        <td>BDT @item.price</td>
+                                        <td>
+                                            <a href="#"
+                                               class="badge @(item.status == "delieverd" ? "badge-success" : "badge-primary") status-button"
+                                               data-order-id="@item.id"
+                                               data-status="@item.status">
+                                                @item.status
+                                            </a>
+
+                                        </td>
+
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
