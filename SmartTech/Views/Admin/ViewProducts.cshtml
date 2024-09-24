@@ -22,7 +22,7 @@
                                 <th>Discount %</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
-                                <th>Status</th>
+                                @*<th>Status</th>*@
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -39,9 +39,9 @@
                                         <td>@item.discount</td>
                                         <td>@item.price</td>
                                         <td>@item.stock_status</td>
-                                        <td>
+                                        @*<td>
                                             @(item.status == 1 ? "Active" : "Deactive")
-                                        </td>
+                                        </td>*@
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">

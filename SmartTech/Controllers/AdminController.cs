@@ -1,5 +1,7 @@
 ﻿using SmartTech.Models;
+using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -398,6 +400,35 @@ namespace SmartTech.Controllers
             var orders = db.orders.Include(o => o.shipping).ToList();
             return View(orders);
         }
+
+        [HttpPost]
+        public JsonResult UpdateOrderStatus(long orderId, string newStatus)
+        {
+            try
+            {
+                var order = db.orders.FirstOrDefault(o => o.id == orderId);
+                if (order != null)
+                {
+                    order.status = newStatus;
+                    db.SaveChanges(); // DbUpdateException happens here
+                    return Json(new { success = true });
+                }
+                return Json(new { success = false });
+            }
+            catch (DbUpdateException dbEx)
+            {
+                // Log the exception details to understand the cause
+                var innerException = dbEx.InnerException?.Message;
+                return Json(new { success = false, message = "Database update error: " + innerException });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+
+
         public ActionResult ViewOrder(string id)
         {
             // Check if id is null or shorter than 10 characters
